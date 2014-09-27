@@ -1,0 +1,201 @@
+%\documentclass[draft]{article}
+\documentclass[11pt]{article}
+\usepackage{zpj}
+\usepackage{ulem}
+\usepackage{fancyvrb}
+\newcommand{\command}[1]{\texttt{\textcolor{blue}{#1}}}
+\newcommand{\soft}[1]{\texttt{\textcolor{blue}{#1}}}
+\definecolor{codecolor}{RGB}{0,0,255}
+\newcommand{\simp}[2]{\command{#1}$=$\command{#2}}
+\begin{document}
+\zihao{-4}
+\title{openSUSE新手指南\thanks{建议安装\command{okular}或\command{evince}来阅读\href{https://jianguoyun.com/p/De3q8f4Q8-HjBRip_Qg}{本文档}。安装的命令参见第\ref{pre}节的zypper}}
+%\author{朱沛俊\thanks{我的邮箱：\href{mailto:zpj.ustc@gmail.com}{zpj.ustc@gmail.com}}}
+\author{\href{mailto:zpj.ustc@gmail.com}{zpj.ustc}}
+\date{}
+\maketitle
+\tableofcontents
+\section{安装openSUSE}
+安装openSUSE请参见\href{https://zh.opensuse.org/%E6%96%B0%E6%89%8B%E6%9D%91}{新手村}。
+另外本文主要针对安装了KDE桌面环境的openSUSE 13.1的用户，其他环境如GNOME下可能会有某些地方不同。
+\section{了解更多}
+\begin{compactitem}
+ \item \href{https://lug.ustc.edu.cn/sites/opensuse-guide/}{非官方指南}
+ \item \href{https://zh.opensuse.org/%E9%A6%96%E9%A1%B5}{openSUSE中文维基}
+ \item \href{https://forum.suse.org.cn/}{openSUSE中文论坛}
+ \item \href{https://google.com}{Google}（如果无法打开，请尝试\href{https://code.google.com/p/goagent/}{goagent}）
+ \item 自学Shell脚本语言
+\end{compactitem}
+\section{预备知识}
+\begin{compactdesc}
+\item[终端模拟器] 简称终端，是一类程序，如KDE下面的\soft{konsole}。\textcolor{red}{本文中大部分命令都是在终端中运行的。}
+\item[root权限] 顾名思义，root权限就是根权限，有了root权限，你基本上可以做任何事而不受权限限制。
+而执行某些命令，如安装、卸载软件包时需要root权限。此时你需要在命令前加sudo才能执行。
+默认情况下输入密码时不会有类似于\texttt{****}的提示符。你也可以用su这个命令切换到root用户，
+但是安全起见，在不必要的时候还是不要用su切换到root。
+\label{pre}\item[zypper] 一个命令行的包管理器，常用命令有
+\begin{Verbatim}[formatcom=\color{codecolor}]
+zypper update #升级软件包
+zypper refresh #刷新软件源
+zypper install $PKG1 $PKG2 #安装$PKG1 $PKG2等软件包
+zypper remove $PKG1 $PKG2 #移除$PKG1 $PKG2等软件包
+\end{Verbatim}
+上述选项都可以简化输入，对应关系为：\\
+\begin{inparaitem}
+ \item \simp{update}{up}
+ \item \simp{refresh}{ref}
+ \item \simp{install}{in}
+ \item \simp{remove}{rm}
+\end{inparaitem}
+\item[YaST] 相当于Windows中的控制面板，让你无需打开命令行即可在图形界面完成包括软件包管理、用户和组管理等在内的各种任务。
+\item[\href{http://software.opensuse.org/packages}{软件包搜索}] 你可以在这里搜索你想要的软件包。
+与zypper/YaST的区别在于可以找到你的源里面没有的软件。如果你利用OBS编译了软件包，那么全世界的人都可以在这里使用它。
+火狐浏览器自带了这个搜索引擎。
+\item[一键安装] 在软件包搜索中找到软件以后，你就可以点击一键安装按钮了。一键安装使得openSUSE中安装程序十分方便，添加软件源+刷新软件源+安装软件一条龙服务。
+\item[启动器] 全称Kickoff应用程序启动器，是类似于Windows中“开始菜单”的一个东西，一般可以用Alt+F1调出。新安装的程序可能暂时无法从这里启动。
+\item[krunner] 是类似于Windows中的“运行”的一个东西，一般可以用Alt+F2调出，之后输入你要运行的程序即可。
+\item[软件源] 软件下载的来源，默认有几个主源，如果主源里面没有想要的软件包而在软
+件包搜索中有，那你只需添加相应的源，再刷新源即可在zypper/YaST中找到。
+%\item[依赖关系]
+\end{compactdesc}
+
+
+\section{软件源及其配置}
+\url{download.opensuse.org}可以根据你的IP自动分配离你最近的
+\href{http://mirrors.opensuse.org/}{镜像源}，所以是否添加镜像源随你便。
+如果你还是想要添加镜像源，
+比如中国科大镜像，可以参考相应的\href{https://lug.ustc.edu.cn/wiki/mirrors/help/opensuse}{镜像使用帮助}之
+后，刷新软件源。
+
+之后你就可以在终端中输入\command{sudo zypper up}更新系统了，这是很重要的一步。
+
+运行zypper/YaST进行软件管理时，经常会由于系统后台正在运行一个zypper（系统只能同时运行一个zypper），
+影响你添加软件源等各种操作。你可以在终端中输入\command{sudo kill pid}把这个进程杀掉，pid是它的进程号。
+
+添加软件源可以用zypper/YaST。YaST中只需要以下步骤：
+YaST$\rightarrow$软件源$\rightarrow$添加$\rightarrow$下一步$\rightarrow$按照提示填写。
+其他方法参见\href{https://zh.opensuse.org/SDB:%E6%B7%BB%E5%8A%A0%E8%BD%AF%E4%BB%B6%E6%BA%90}{SDB:添加软件源}
+
+常用软件源：\begin{compactdesc}
+ \item[\href{http://mirrors.hust.edu.cn/packman/suse/openSUSE_13.1/}{Packman}]
+ 提供多媒体编解码器-播放器、Broadcom无线网卡驱动、游戏等
+ \item[\href{http://download.opensuse.org/repositories/home:/opensuse_zh/openSUSE_13.1/}{opensuse\_zh}]
+ 此软件源由中文用户维护，提供国内常用的软件。
+ \item[\href{http://download.opensuse.org/repositories/M17N/openSUSE_13.1/}{M17N}]
+ 多语言小组，含有带infinality的freetype补丁，以及最新的Fcitx输入法等。
+ \item[\href{http://download.opensuse.org/repositories/KDE:/Extra/openSUSE_13.1/}{KDE:Extra}]
+ 含有大量额外的KDE程序。
+ \item[\href{http://download.opensuse.org/repositories/GNOME:/Apps/openSUSE_13.1/}{GNOME:Apps}]
+ 含有大量GNOME程序。
+ \item[\href{http://download.opensuse.org/repositories/office:/goldendict/openSUSE_13.1/}{Goldendict}]
+ 含有最新版的支持mdx格式词典的Goldendict程序
+\end{compactdesc}
+
+除此之外还有很多其他的源没有列举出来。一般在你进行软件包搜索后一键安装时，它会自动给你添加。个人建议如果有多个源可以选择的话，选择
+看起来比较官方的，如Virtualization, Publishing, Science, Game, Education等开头的。当然这也并不是说
+home开头就一定不好，比如说home:opensuse\_zh和home:MargueriteSu源就是很不错的。
+下文中提到的软件包如果需要特殊源则会以脚注标记出来。
+\section{本地化配置}
+用LiveCD安装，无法得到完整的中文KDE环境，所以你需要安装
+\begin{Verbatim}[formatcom=\color{codecolor}]
+    kde4-l10n-zh_CN translation-update-zh_CN yast2-trans-zh_CN
+\end{Verbatim}
+
+为解决zip压缩包解压后文件名乱码的问题，请安装\soft{unzip-rcc}。
+
+fcitx是一个中文输入法框架，它对应的包为\soft{fcitx fcitx-config-kde4}。安装好后再启动它，从此你的openSUSE就可以输入中文了。
+装好后它的默认词库还很弱，你可以安装一个比较大的词库（非必需）。可%
+以参见\href{https://code.google.com/p/hslinuxextra/}{hs\-linux\-extra}以及%
+\href{https://www.librehat.com/fcitx-sogou-pinyin-cell-database-convert-import-guide/}{词库教程}%
+或者下载我编译好的\href{http://pan.baidu.com/s/1i3HtJ4T}{pyphrase}文件，复制
+到家目录的\command{.config/fcitx/pinyin/}中。
+
+当然你也可以不使用默认的拼音输入法而使用Fcitx的谷歌拼音（\soft{goo\-gle\-pin\-yin}），
+搜狗拼音（\soft{so\-gou\-pin\-yin}）等输入法模块。对于大部分输入法你都可以使用云拼音（\soft{cloud\-pin\-yin}）等模块。
+安装好云拼音以后，只要在fcitx的附加组件设置中配置好，你的输入法就可以利用云拼音输入了。注意，某些云拼音来源
+可能会失效，如果云拼音无法使用可能就是因为这个原因。
+\section[双显卡]{双显卡\protect\footnote{本人不对折腾双显卡造成的问题负责}}
+如果你是NVIDIA用户，并且你的显卡支持，请参见\href{https://zh.opensuse.org/SDB:Bumblebee}{SDB:Bumblebee}，强烈建议加源安装。
+
+如果你是AMD用户\sout{，据室友说可以用命令关掉独立显卡，请自行Google。}
+\section{QQ}
+腾讯官方提供的QQ for Linux早就无法使用了。建议使用webQQ/smartQQ这些网页版的qq。欲了解更
+多Linux下QQ的解决方法请查看\href{https://zh.opensuse.org/SDB:QQ}{SDB:QQ}。当然，最好是不要在电脑上使用qq，或者
+使用手机登录qq。
+\section{字体显示及其美化}
+正式文档排版一般都需要宋体、黑体、仿宋、楷体这几种\href{http://pan.baidu.com/s/1mgiHWmO}{字体}，下载好后点击安装即可。
+开源的字体如\soft{ubuntu-fonts\footnote{需要添加M17N:Fonts源} wqy-microhei-fonts}等则可以直接在源中找到。
+
+在字体设置中，调节各种字体字号为你喜欢的，个人认为屏幕显示字体最好选择无衬线字体，如Droid Sans Fallback、各种黑体。
+
+为了使你的字体显示更加犀利，你需要将\soft{libfreetype6}相关的包的切换到opensuse\_zh源中，然后重新登录即可。可在YaST中进行操作。
+\section{影音播放}
+{\color{orange}首先请安装好\href{https://lug.ustc.edu.cn/sites/opensuse-guide/codecs.php}{解码器}，否则某些格式将无法播放！}。执行完这一步你的Packman源
+就应该添加好了，如果你认为这个源太慢，请尝
+试Packman的\href{http://packman.links2linux.org/mirrors}{镜%
+像源}如台湾的\href{http://ftp.twaren.net/Linux/Packman/}{twaren}。
+\begin{compactdesc}
+ \item[电影] 推荐\soft{smplayer}，或者\soft{vlc}。
+ \item[音乐] 推荐\soft{deepin-music}，启用\href{https://forum.suse.org.cn/viewtopic.php?f=7&t=2530}{百度插件}后便能够下载歌曲了。十分方便，
+当然你也可以使用默认的\soft{amarok}，但是前者搜索歌词，下载歌曲等功能更为强大
+\end{compactdesc}
+\section{图像处理}
+点阵图：\soft{gimp}
+
+矢量图：\soft{inkscape}
+\section{办公程序}
+\TeX ：推荐Kile作为前端，这种情况下你只需要
+\begin{Verbatim}[formatcom=\color{codecolor}]
+    sudo zypper in kile texlive-ctex texlive-savesym
+\end{Verbatim}
+更详细的配置过程请参
+考\LaTeX的\href{https://forum.suse.org.cn/viewtopic.php?f=6&t=2392&p=18750}{配置指南}。除此之外你还可
+以用\TeX studio\footnote{需要添加Publishing源}, \TeX works等各种IDE，当然VIM和Emacs这类通用编辑器也是可以的，只不过可能比较难配置。本
+文就是用\LaTeX排版的，怎么样，效果还不错吧。
+
+Office：LibreOffice, WPS（\soft{wps-office}\footnote{需要添加opensuse\_zh源}），安装好后需要下载安装\href{http://pan.baidu.com/s/1mgC3A0C}{Symbols}字
+体\footnote{感谢lzkxuan给我们提供此字体包，原帖地址：\url{https://forum.suse.org.cn/viewtopic.php?f=6&t=2697}}，如果你是64位操作系统
+请安装\soft{cups-libs-32bit}，否则WPS无法输出文档为pdf，可能是由于WPS是32位的程序。
+
+邮件：\soft{thunderbird}, \soft{kmail}
+
+RSS:\soft{akregator}, \soft{thunderbird}
+\section{教育程序}
+词典：推荐\soft{goldendict}\footnote{需要添加Goldendict源，否则1.5以下的旧版无法读取mdx格式}，词典请上\href{http://pdawiki.com/forum/forum.php}{pdawiki}下载，
+为了让你的词典更聪明，请下载\href{https://zpj.blog.ustc.edu.cn/wp-content/uploads/2014/02/wordsrule.tar.gz}{构词法}。
+
+背单词：\soft{parley}是一款很不错的背单词得程序。
+
+科学计算、数据处理：\soft{octave}、\textsc{Matlab}、Mathematica、\soft{maxima}、R(\soft{R-base})
+\section{网盘}
+\begin{compactitem}
+ \item 坚果云\soft{nutstore}\footnote{需要添加home:PaleFire源，感谢PaleFire版主的辛勤劳动！}
+ \item 百度云在openSUSE下有非官方的\soft{bcloud}\footnote{需要添加相应的源}客户端，不过似乎速度较慢
+ \item Dropbox
+ \item Wuala
+ \item etc.欢迎补充
+\end{compactitem}
+\section{下载程序}
+\begin{compactdesc}
+ \item[普通下载] kget, Firefox的down\-them\-all插件，或者直接使用浏览器自带的下载功能
+ \item[BT] ktorrent, deluge, transmition
+ \item[ed2k] amule
+\end{compactdesc}
+
+大部分下载都可以用百度网盘这个神器离线下载好，然后利用有一份田网友的\href{http://git.oschina.net/youyifentian/dupanlink}{百度网盘助手}显示百度网盘文件的直接链接
+\section{其他}
+Konsole中可能没有采用恰当的字体，导致显示的光标与文字中间有很大的间隔，如果你发现你的Konsole有这个问题，
+请依次进入Konsole的以下菜单：设置$\rightarrow$编辑当前方案$\rightarrow$外观$\rightarrow$选择
+字体$\rightarrow$选中Droid sans Mono或其他等宽字体$\rightarrow$确定$\rightarrow$应用。
+
+\soft{redshift}及其\soft{plasmoid-redshift}挂件使你能够方便的调节屏幕色温，便于夜晚使用电脑。
+
+安装解码器等的时候，可能会遇到依赖关系导致的冲突的问题。
+冲突的解决请参见\href{https://forum.suse.org.cn/viewtopic.php?t=2867&p=22491#p22491}{安装软件碰到碰到冲突，应该如何选择解决方式?}
+
+更新时候常常会遇到以下情况：“将不会安装以下 51 个软件包的更新：blahblahblah”，若对此有疑问请
+参见\href{https://forum.suse.org.cn/viewtopic.php?t=2777&p=21896}{帮助新手理解为什么有些包不会被更新}
+
+需要在日期与时间设置中修改时间服务器为asia.pool.ntp.org否则会比北京时间慢三分钟
+
+\end{document}
