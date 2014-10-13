@@ -33,8 +33,8 @@
 默认情况下输入密码时不会有类似于\texttt{****}的提示符。你也可以用su这个命令切换到root用户，
 但是安全起见，在不必要的时候还是不要用su切换到root。
 
-\paragraph{软件源} 软件源就是软件下载的来源，默认有几个主源，如果主源里面没有想要的软件包而在软
-件包搜索中有，那你只需添加相应的源，再刷新源即可在zypper/YaST中找到。
+\paragraph{软件源} 软件源就是软件下载的来源。如果你已经添加的所有源里面都没有想要的软件包，但是在软
+件包搜索或其他源中有，那你只需添加相应的源，再刷新源即可在zypper/YaST中找到。添加软件源的方法可以参见\href{https://zh.opensuse.org/SDB:%E6%B7%BB%E5%8A%A0%E8%BD%AF%E4%BB%B6%E6%BA%90}{添加软件源}
 %\item[依赖关系]
 \subsection[包管理器]{openSUSE下的包管理器}
 openSUSE下安装软件一般先用zypper/YaST搜索，找到了便可以直接用zypper/YaST安装。
@@ -43,18 +43,18 @@ openSUSE下安装软件一般先用zypper/YaST搜索，找到了便可以直接�
 \begin{Verbatim}[formatcom=\color{codecolor}]
     zypper update #升级软件包
     zypper refresh #刷新软件源
-    zypper install $PKG1 $PKG2 #安装$PKG1 $PKG2等软件包
-    zypper remove $PKG1 $PKG2 #移除$PKG1 $PKG2等软件包
+    zypper install PKG1 PKG2 #安装PKG1和PKG2等软件包
+    zypper remove PKG1 PKG2 #移除PKG1和PKG2等软件包
 \end{Verbatim}
-上述选项都可以简化输入，对应关系为：\begin{inparaitem}
+其中上述选项都可以简化输入，对应关系为：\begin{inparaitem}
  \item \simp{update}{up}
  \item \simp{refresh}{ref}
  \item \simp{install}{in}
  \item \simp{remove}{rm}
 \end{inparaitem}
 \paragraph{YaST} 这相当于Windows中的控制面板，让你无需打开命令行即可在图形界面完成包括软件包管理、用户和组管理等在内的各种任务。
-\paragraph{\href{http://software.opensuse.org/packages}{软件包搜索}与一键安装} 在这里你可以搜索你想要的软件包。
-与zypper/YaST的区别在于可以找到你的源里面没有的软件。如果你利用OBS编译了软件包，那么全世界的人都可以在这里使用它。
+\paragraph[软件包搜索与一键安装]{\href{http://software.opensuse.org/packages}{软件包搜索}与一键安装} 在这里你可以搜索你想要的软件包。
+与zypper/YaST的区别在于可以找到你的源里面没有的软件。如果你利用\href{https://build.opensuse.org/}{OBS}编译了软件包，那么全世界的人都可以在这里使用它。
 火狐浏览器自带了这个搜索引擎。在软件包搜索中找到软件以后，你就可以点击一键安装按钮了。一
 键安装使得openSUSE中安装程序十分方便。在你进行软件包搜索后如果有多个源可以选择，同等条件下尽量选择
 看起来比较官方的。\[\text{搜索软件}+\text{添加软件源}+\text{刷新软件源}+\text{安装软件}=\text{一条龙服务}\]
@@ -125,13 +125,11 @@ Fcitx是一个中文输入法框架，它对应的包为\soft{fcitx fcitx-config
 以用\TeX studio, \TeX works等各种IDE，当然VIM和Emacs这类通用编辑器也是可以的，只不过可能比较难配置。本
 文就是用\LaTeX排版的，怎么样，效果还不错吧。
 
-Office：LibreOffice, WPS，安装好后需要下载安装\href{http://pan.baidu.com/s/1mgC3A0C}{Symbols}字
-体\footnote{感谢lzkxuan给我们提供此字体包，原帖地址：\url{https://forum.suse.org.cn/viewtopic.php?f=6&t=2697}}，如果你是64位操作系统
-请安装\soft{cups-libs-32bit}，否则WPS无法输出文档为pdf，可能是由于WPS是32位的程序。
+Office：LibreOffice、永中Office或WPS。安装好WPS后需要下载安装\href{http://pan.baidu.com/s/1mgC3A0C}{Symbols}字体\footnote{感谢lzkxuan给我们提供此字体包，原帖地址：\url{https://forum.suse.org.cn/viewtopic.php?f=6&t=2697}}否则无法显示各种数学符号等。另外由于WPS是32位的程序，所以如果你是64位操作系统请额外安装\soft{cups-libs-32bit}，否则WPS无法输出文档为pdf。
 
-邮件：\soft{thunderbird}, \soft{kmail}
+邮件客户端：\soft{thunderbird}, \soft{kmail}
 
-RSS:\soft{akregator}, \soft{thunderbird}
+RSS客户端:\soft{akregator}, \soft{thunderbird}
 \section{教育程序}
 词典：推荐\soft{GoldenDict}\footnote{请用软件包搜索安装版本号大于1.5的版本，否则无法读取.mdx格式}，词典请上\href{http://pdawiki.com/forum/forum.php}{pdawiki}下载，
 为了让你的词典更聪明，请下载\href{https://zpj.blog.ustc.edu.cn/wp-content/uploads/2014/02/wordsrule.tar.gz}{构词法}。
@@ -190,7 +188,7 @@ Konsole中可能没有采用恰当的字体，导致显示的光标与文字中�
 \section{常用软件源}
 %添加软件源可以用zypper/YaST。YaST中只需要以下步骤：
 %YaST$\rightarrow$软件源$\rightarrow$添加$\rightarrow$下一步$\rightarrow$按照提示填写。
-添加软件源的方法可以参见\href{https://zh.opensuse.org/SDB:%E6%B7%BB%E5%8A%A0%E8%BD%AF%E4%BB%B6%E6%BA%90}{SDB:添加软件源}
+
 
 \begin{compactdesc}
  \item[\href{http://mirrors.hust.edu.cn/packman/suse/openSUSE_13.1/}{Packman}]
@@ -202,4 +200,6 @@ Konsole中可能没有采用恰当的字体，导致显示的光标与文字中�
  \item[\href{http://download.opensuse.org/repositories/GNOME:/Apps/openSUSE_13.1/}{GNOME:Apps}]
  含有大量GNOME程序。
 \end{compactdesc}
+%\section{KDE下的快捷键设置}
+%\section{加快zypper/YaST的奇技淫巧}
 \end{document}
