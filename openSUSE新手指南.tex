@@ -38,7 +38,8 @@
 %\item[依赖关系]
 \subsection[包管理器]{openSUSE下的包管理器}
 openSUSE下安装软件一般先用zypper/YaST搜索，找到了便可以直接用zypper/YaST安装。
-如果搜索不到，说明你的软件源里面没有包含这个软件，此时你就需要用软件包搜索了。
+如果搜索不到，说明你添加的的所有软件源里面都没有包含这个软件，此时你就需要用软件包搜索了。搜到了便一键安装，否则便只能采取最后方法——自行编译了。如果你你有打包能力并且这个程序不违反OBS相关规定，那么你就把它丢到OBS上面去，
+然后别人也可以用这个打好了的包了。
 \paragraph{zypper}\label{pre} 它是一个命令行的包管理器，常用命令有
 \begin{Verbatim}[formatcom=\color{codecolor}]
     zypper update #升级软件包
@@ -97,7 +98,7 @@ Fcitx是一个中文输入法框架，它对应的包为\soft{fcitx fcitx-config
 
 如果你是AMD用户\sout{，据室友说可以用命令关掉独立显卡，请自行Google。}
 \chapter{各种应用}
-介绍Linux下面常用的各类程序
+介绍Linux下面常用的各类程序，本章用到且的OBS中没有的源一般会写在\ref{repo}中。
 \section{Linux下的QQ}
 腾讯官方提供的QQ for Linux早就无法使用了。webQQ/smartQQ这些网页版的QQ似乎也已经挂了，所以很多方法都已经不行了。
 但是Chrome/Chromium目前可以运行某些安卓程序，经过测试手机QQ2011可以成功在上面运行。
@@ -112,6 +113,18 @@ Fcitx是一个中文输入法框架，它对应的包为\soft{fcitx fcitx-config
  \item[音乐] 推荐\soft{deepin-music}，启用\href{https://forum.suse.org.cn/viewtopic.php?f=7&t=2530}{百度插件}后便能够下载歌曲了。十分方便，
 当然你也可以使用默认的\soft{amarok}，但是前者搜索歌词，下载歌曲等功能更为强大
 \end{compactdesc}
+\section{浏览器}
+openSUSE下面默认装有Firefox浏览器，它可以通过安装附加组件来增强其功能。
+
+Firefox：默认安装
+
+Chrome：添加Chrome的源后再搜索\soft{chrome}后安装相应的包即可。
+
+Chromium：添加Packman源后再：
+\begin{verbatim}
+    sudo zypper in chromium chromium-ffmpeg chromium-pepper-flash
+\end{verbatim}
+即可安装好Chromium
 \section{图像处理}
 点阵图：\soft{gimp}
 
@@ -130,12 +143,12 @@ Office：LibreOffice、永中Office或WPS。安装好WPS后需要下载安装\hr
 
 邮件客户端：\soft{thunderbird}, \soft{kmail}
 
-RSS客户端:\soft{akregator}, \soft{thunderbird}
+文本编辑器：Kate, VIM, Emacs etc.
 \section{教育程序}
 词典：推荐\soft{GoldenDict}\footnote{请用软件包搜索安装版本号大于1.5的版本，否则无法读取.mdx格式}，词典请上\href{http://pdawiki.com/forum/forum.php}{pdawiki}下载，
 为了让你的词典更聪明，请下载\href{https://zpj.blog.ustc.edu.cn/wp-content/uploads/2014/02/wordsrule.tar.gz}{构词法}。
 
-背单词：\soft{Parley}是一款很不错的背单词的程序。
+背单词：\soft{Parley}是一款很不错的背单词的程序%g，介绍可以参见
 
 科学计算、数据处理：\soft{octave}、\textsc{Matlab}、Mathematica、\soft{maxima}、R(\soft{R-base})
 \section{网盘}
@@ -164,11 +177,12 @@ RSS客户端:\soft{akregator}, \soft{thunderbird}
 
 \section{了解更多}
 \begin{compactitem}
- \item \href{https://lug.ustc.edu.cn/sites/opensuse-guide/}{非官方指南}
- \item \href{https://zh.opensuse.org/%E9%A6%96%E9%A1%B5}{openSUSE中文维基}
- \item \href{https://forum.suse.org.cn/}{openSUSE中文论坛}
- \item \href{https://google.com}{Google}（如果无法打开，请尝试\href{https://code.google.com/p/goagent/}{goagent}）
- \item 自学Shell脚本语言
+ \item \href{https://lug.ustc.edu.cn/sites/opensuse-guide/}{非官方指南}详细的介绍了一些简单的内容
+ \item 有问题可以搜索\href{https://zh.opensuse.org/%E9%A6%96%E9%A1%B5}{openSUSE中文维基}
+ \item \href{https://forum.suse.org.cn/}{openSUSE中文论坛}是openSUSE中文的官方论坛，坛主为MargueriteSu。
+ \item 利用\href{https://google.com}{Google}搜索解决问题（如果无法打开，请尝试\href{https://code.google.com/p/goagent/}{Goagent}）
+ \item 自学Shell脚本语言，可以参考入门书籍TLCL：\href{http://home.ustc.edu.cn/~zpj/doc/Linux/The_Linux_Command_Line.pdf}{英文版}或\href{http://home.ustc.edu.cn/~zpj/doc/Linux/The_Linux_Command_Line(%e4%b8%ad%e6%96%87%e7%89%88).pdf}{中文版}
+ \item 学习git，有电子书：\href{http://git-scm.com/book/}{英文版HTML}或中文版\href{http://git-scm.com/book/zh}{HTML}/\href{http://liam0205.me/attachment/Git/progit.zh.pdf}{pdf}
 \end{compactitem}
 \section{常见问题}
 Konsole中可能没有采用恰当的字体，导致显示的光标与文字中间有很大的间隔，如果你发现你的Konsole有这个问题，
@@ -182,7 +196,7 @@ Konsole中可能没有采用恰当的字体，导致显示的光标与文字中�
 
 更新时候常常会遇到以下情况：“将不会安装以下 51 个软件包的更新：blahblahblah”，若对此有疑问请
 参见\href{https://forum.suse.org.cn/viewtopic.php?t=2777&p=21896}{帮助新手理解为什么有些包不会被更新}
-\section{常用软件源}
+\section{常用软件源}\label{repo}
 %添加软件源可以用zypper/YaST。YaST中只需要以下步骤：
 %YaST$\rightarrow$软件源$\rightarrow$添加$\rightarrow$下一步$\rightarrow$按照提示填写。
 
@@ -196,11 +210,18 @@ Konsole中可能没有采用恰当的字体，导致显示的光标与文字中�
  含有大量额外的KDE程序。
  \item[\href{http://download.opensuse.org/repositories/GNOME:/Apps/openSUSE_13.1/}{GNOME:Apps}]
  含有大量GNOME程序。
+ \item[Chrome：\href{http://dl.google.com/linux/chrome/rpm/stable/i386}{32位}、 \href{http://dl.google.com/linux/chrome/rpm/stable/x86_64}{64位}] 含有各种稳定版及非稳定版的Google Chrome浏览器
 \end{compactdesc}
 \section{KDE下的一些奇技淫巧}
 在快捷键设置中你可以为程序/命令设置快捷键，这样你就可以抛弃桌面上的应用程序图标了。
 
 特殊应用程序设置参见\href{https://zpj.blog.ustc.edu.cn/?p=304}{我的博客}。
 
-kdegraphics-thumbnailers可以使得dolphin能够预览pdf。
+\soft{kdegraphics-thumbnailers}使得Dolphin能够预览pdf。
+
+KDE特效中可以设置反色功能，之后只需一个快捷键切换到夜间模式。
+
+KDE中的Kate、Kile等编辑器可以嵌入一个迷你终端，十分方便。
+
+Dolphin的拆分视图功能使得在不同文件夹中复制文件等操作更加便捷。
 \end{document}
