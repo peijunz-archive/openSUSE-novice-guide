@@ -34,10 +34,10 @@
 但是安全起见，在不必要的时候还是不要用su切换到root。
 
 \paragraph{软件源} 软件源就是软件下载的来源。如果你已经添加的所有源里面都没有想要的软件包，但是在软
-件包搜索或其他源中有，那你只需添加相应的源，再刷新源即可在zypper/YaST中找到。添加软件源的方法可以参见\href{https://zh.opensuse.org/SDB:%E6%B7%BB%E5%8A%A0%E8%BD%AF%E4%BB%B6%E6%BA%90}{添加软件源}
+件包搜索或其他源中有，那你只需添加相应的源，再刷新源即可在zypper或YaST中找到。添加软件源的方法可以参见\href{https://zh.opensuse.org/SDB:%E6%B7%BB%E5%8A%A0%E8%BD%AF%E4%BB%B6%E6%BA%90}{添加软件源}
 %\item[依赖关系]
 \subsection[包管理器]{openSUSE下的包管理器}
-openSUSE下安装软件一般先用zypper/YaST搜索，找到了便可以直接用zypper/YaST安装。
+openSUSE下安装软件一般先用zypper或YaST搜索，找到了便可以直接用zypper或YaST安装。
 如果搜索不到，说明你添加的的所有软件源里面都没有包含这个软件，此时你就需要用软件包搜索了。搜到了便一键安装，否则便只能采取最后方法——自行编译了。如果你你有打包能力并且这个程序不违反OBS相关规定，那么你就把它丢到OBS上面去，
 然后别人也可以用这个打好了的包了。
 \paragraph{zypper}\label{pre} 它是一个命令行的包管理器，常用命令有
@@ -55,7 +55,7 @@ openSUSE下安装软件一般先用zypper/YaST搜索，找到了便可以直接�
 \end{inparaitem}
 \paragraph{YaST} 这相当于Windows中的控制面板，让你无需打开命令行即可在图形界面完成包括软件包管理、用户和组管理等在内的各种任务。
 \paragraph[软件包搜索与一键安装]{\href{http://software.opensuse.org/packages}{软件包搜索}与一键安装} 在这里你可以搜索你想要的软件包。
-与zypper/YaST的区别在于可以找到你的源里面没有的软件。如果你利用\href{https://build.opensuse.org/}{OBS}编译了软件包，那么全世界的人都可以在这里使用它。
+与zypper或YaST的区别在于可以找到你的源里面没有的软件。如果你利用\href{https://build.opensuse.org/}{OBS}编译了软件包，那么全世界的人都可以在这里使用它。
 火狐浏览器自带了这个搜索引擎。在软件包搜索中找到软件以后，你就可以点击一键安装按钮了。一
 键安装使得openSUSE中安装程序十分方便。在你进行软件包搜索后如果有多个源可以选择，同等条件下尽量选择
 看起来比较官方的。\[\text{搜索软件}+\text{添加软件源}+\text{刷新软件源}+\text{安装软件}=\text{一条龙服务}\]
@@ -71,7 +71,7 @@ openSUSE下安装软件一般先用zypper/YaST搜索，找到了便可以直接�
 
 之后你就可以在终端中输入\command{sudo zypper up}更新系统了，这是很重要的一步。
 
-运行zypper/YaST进行软件管理时，经常会由于系统后台正在运行一个zypper（系统只能同时运行一个zypper），
+运行zypper或YaST进行软件管理时，经常会由于系统后台正在运行一个zypper（系统只能同时运行一个zypper），
 影响你添加软件源等各种操作。你可以在终端中输入\command{sudo kill pid}把这个进程杀掉，pid是它的进程号。
 
 \section{本地化配置}
@@ -100,8 +100,8 @@ Fcitx是一个中文输入法框架，它对应的包为\soft{fcitx fcitx-config
 \chapter{各种应用}
 介绍Linux下面常用的各类程序，本章用到且的OBS中没有的源一般会写在\ref{repo}中。
 \section{Linux下的QQ}
-腾讯官方提供的QQ for Linux早就无法使用了。webQQ/smartQQ这些网页版的QQ似乎也已经挂了，所以很多方法都已经不行了。
-但是Chrome/Chromium目前可以运行某些安卓程序，经过测试手机QQ2011可以成功在上面运行。
+腾讯官方提供的QQ for Linux早就无法使用了。webQQ已经挂了，SmartQQ基本半残，只能发送文字——总之很多方法都已经不行了。
+但是Chrome和Chromium目前可以运行某些安卓程序，经过测试手机QQ2011可以成功在上面运行。
 具体可以参考\href{http://huodong.ustc.edu.cn/Crx}{apk2crx}。
 \section{影音播放}
 {\color{orange}首先请安装好\href{https://lug.ustc.edu.cn/sites/opensuse-guide/codecs.php}{解码器}，否则某些格式将无法播放！}。执行完这一步你的Packman源
@@ -208,20 +208,26 @@ Konsole中可能没有采用恰当的字体，导致显示的光标与文字中�
  含有大量额外的KDE程序。
  \item[\href{http://download.opensuse.org/repositories/GNOME:/Apps/openSUSE_13.1/}{GNOME:Apps}]
  含有大量GNOME程序。
- \item[Chrome：\href{http://dl.google.com/linux/chrome/rpm/stable/i386}{32位}、 \href{http://dl.google.com/linux/chrome/rpm/stable/x86_64}{64位}] 含有各种稳定版及非稳定版的Google Chrome浏览器
+ \item[\href{http://dl.google.com/linux/chrome/rpm/stable/i386}{Chrome~32位}|\href{http://dl.google.com/linux/chrome/rpm/stable/x86_64}{Chrome~64位}] 含有各种稳定版及非稳定版的Google Chrome浏览器
 \end{compactdesc}
 \section{KDE下的一些奇技淫巧}
-在快捷键设置中你可以为程序/命令设置快捷键，这样你就可以抛弃桌面上的应用程序图标了。
+\paragraph{快捷键} 在快捷键设置中你可以为程序或命令设置快捷键，这样你就可以抛弃桌面图标了——常用程序快捷键启动，非常用程序用启动器或Krunner启动。
 
-特殊应用程序设置参见\href{https://zpj.blog.ustc.edu.cn/?p=304}{我的博客}。
+\paragraph{特殊应用设置} 特殊应用程序设置参见\href{https://zpj.blog.ustc.edu.cn/?p=304}{我的博客}。
 
-\soft{kdegraphics-thumbnailers}使得Dolphin能够预览pdf。
+\paragraph{Dolphin中的缩略图} Dolphin可以开启缩略图功能，在配置菜单的常规中的预览中选中相应条目即可。如果没有你想要的条目比如pdf，那么你可以用thumbnail为关键字，搜索源中相应的软件包并安装即可。比如：
+\begin{compactenum}
+ \item \soft{kffmpegthumbnailer} 生成视频文件缩略图
+ \item \soft{kdegraphics-thumbnailers} 生成pdf等文件缩略图
+ \item \soft{kde-thumbnailer-epub} 生成epub文件缩略图
+\end{compactenum}
 
-KDE特效中可以设置反色功能，之后只需一个快捷键切换到夜间模式。
 
-KDE中的Kate、Kile等编辑器可以嵌入一个迷你终端，十分方便。
+\paragraph{屏幕反色} 在桌面效果的全部效果中可以设置反色功能，之后只需一个快捷键切换到夜间模式。
 
-Dolphin的拆分视图功能使得在不同文件夹中复制文件等操作更加便捷。
+\paragraph{嵌入式终端} Kate、Kile等编辑器可以嵌入一个迷你终端，十分方便。
 
-\soft{redshift}及其\soft{plasmoid-redshift}挂件使你能够方便的调节屏幕色温，便于夜晚使用电脑。
+\paragraph{拆分视图} Dolphin的拆分视图功能使得在不同文件夹中复制文件等操作更加便捷。
+
+\paragraph{色温调节} \soft{redshift}及其\soft{plasmoid-redshift}挂件使你能够方便的调节屏幕色温，保护视力。
 \end{document}
