@@ -24,7 +24,7 @@
 安装openSUSE请参见\href{https://zh.opensuse.org/%E6%96%B0%E6%89%8B%E6%9D%91}{新手村}。
 另外本文主要针对安装了KDE桌面环境的openSUSE 13.1的用户，其他环境如GNOME下可能会有某些地方不同。
 
-对于桌面用户，一般只需要\texttt{/, /home, swap}三个分区即可，分区大小与具体使用有关。\texttt{swap}的大小一般桌面用户可以用公式$y=2\sqrt{x}$计算，其中$y$代表\texttt{swap}分区的大小，$x$代表内存大小，单位皆为GiB。而\texttt{/home}大小较为随意，最好不小于50G。根分区\texttt{/}则主要取决于你安装的程序（它们会在\texttt{/usr}中），比如你安装了\textsc{Matlab}就会占用7.9G，而Mathematica 会占用约4.5G，如果你将要安装这类大型软件，建议至少应该有60G的根分区空间。分区大小并没有严格的准则。
+对于桌面用户，一般只需要\command{/, /home, swap}三个分区即可，分区大小与具体使用有关。\command{swap}的大小一般桌面用户可以用公式$y=2\sqrt{x}$计算，其中$y$代表\command{swap}分区的大小，$x$代表内存大小，单位皆为GiB。而\command{/home}大小较为随意，最好不小于50G。根分区\command{/}则主要取决于你安装的程序（它们会在\command{/usr}中），比如你安装了\textsc{Matlab}就会占用7.9G，而Mathematica 会占用约4.5G，如果你将要安装这类大型软件，建议至少应该有60G的根分区空间。分区大小并没有严格的准则。
 如果可能的话，为每个文件系统至少保留$25\%$的额外空间以应对今后的变化，还可以避免文件系统碎片。
 
 \section{基本概念}
@@ -33,7 +33,7 @@
 
 \paragraph{root权限} 顾名思义，root权限就是最根本权限。也就是说，有了root权限，你基本上有了做任何事的权力。
 而执行某些命令，如安装、卸载软件包时需要root权限。此时你需要在命令前加sudo才能执行。
-默认情况下输入密码时不会有类似于\texttt{****}的提示符。你也可以用su这个命令切换到root用户，
+默认情况下输入密码时不会有类似于\command{****}的提示符。你也可以用su这个命令切换到root用户，
 但是安全起见，在不必要的时候还是不要用su切换到root。
 
 \paragraph{软件源} 软件源就是软件下载的来源。如果你已经添加的所有源里面都没有想要的软件包，但是在软
@@ -96,10 +96,15 @@ Fcitx是一个中文输入法框架，它对应的包为\soft{fcitx fcitx-config
 搜狗拼音（\soft{so\-gou\-pin\-yin}）等输入法模块。对于大部分输入法你都可以使用云拼音（\soft{cloud\-pin\-yin}）等模块。
 安装好云拼音以后，只要在Fcitx的附加组件设置中配置好，你的输入法就可以利用云拼音输入了。注意，某些云拼音来源
 可能会失效，如果云拼音无法使用可能就是因为这个原因。
-\section[双显卡]{双显卡}
-如果你是NVIDIA用户，并且你的显卡支持，请参见\href{https://zh.opensuse.org/SDB:Bumblebee}{SDB:Bumblebee}，强烈建议加源安装。
+\section[双显卡]{双显卡关闭独立显卡}
+\paragraph{NVIDIA} 如果你的显卡支持Bumblebee，请参见\href{https://zh.opensuse.org/SDB:Bumblebee}{SDB:Bumblebee}，强烈建议加源安装。
 
-如果你是AMD用户\sout{，据室友说可以用命令关掉独立显卡，请自行Google。}
+\paragraph{AMD} 如果你用的是开源驱动的话，在\command{/etc/init.d/after.local}后面加下面两行，那么开机后将会自动运行以关闭独显：
+\begin{verbatim}
+    echo IGD > /sys/kernel/debug/vgasitcheroo/switch
+    echo OFF > /sys/kernel/debug/vgasitcheroo/switch    
+\end{verbatim}
+具体请参考\href{www.linuxtoy.org}{LinuxTOY}。需要注意的是openSUSE并没有相应的\command{/etc/rc.local}文件而是用上面所说的相关文件代替。
 \chapter{各种应用}
 介绍Linux下面常用的各类程序，本章用到且的OBS中没有的源一般会写在\ref{repo}中。
 \section{Linux下的QQ}
