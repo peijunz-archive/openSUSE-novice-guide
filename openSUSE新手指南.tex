@@ -55,7 +55,11 @@ openSUSE下安装软件一般先用zypper或YaST搜索，找到了便可以直�
  \item \simp{refresh}{ref}
  \item \simp{install}{in}
  \item \simp{remove}{rm}
-\end{inparaitem}
+\end{inparaitem}。更多帮助可以用\command{zypper --help}查看相关帮助。如果不想每次甚至搜索软件包的时候都自动刷新一次，你可以禁用所有软件源自动刷新：
+\begin{Verbatim}[formatcom=\color{codecolor}]
+    zypper mr -Ra
+\end{Verbatim}
+
 \paragraph{YaST} 这相当于Windows中的控制面板，让你无需打开命令行即可在图形界面完成包括软件包管理、用户和组管理等在内的各种任务。
 \paragraph[软件包搜索与一键安装]{\href{http://software.opensuse.org/packages}{软件包搜索}与一键安装} 在这里你可以搜索你想要的软件包。
 与zypper或YaST的区别在于可以找到你的源里面没有的软件。如果你利用\href{https://build.opensuse.org/}{OBS}编译了软件包，那么全世界的人都可以在这里使用它。
@@ -100,10 +104,10 @@ Fcitx是一个中文输入法框架，它对应的包为\soft{fcitx fcitx-config
 \paragraph{NVIDIA} 如果你的显卡支持Bumblebee，请参见\href{https://zh.opensuse.org/SDB:Bumblebee}{SDB:Bumblebee}，强烈建议加源安装。
 
 \paragraph{AMD} 如果你用的是开源驱动的话，在\command{/etc/init.d/after.local}后面加下面两行，那么开机后将会自动运行以关闭独显：
-\begin{verbatim}
+\begin{Verbatim}[formatcom=\color{codecolor}]
     echo IGD > /sys/kernel/debug/vgasitcheroo/switch
     echo OFF > /sys/kernel/debug/vgasitcheroo/switch    
-\end{verbatim}
+\end{Verbatim}
 具体请参考\href{https://linuxtoy.org/archives/how-to-use-vga-switcheroo-disable-video-card-linux-kms.html}{关闭某一可切换显卡}。需要注意的是openSUSE并没有相应的\command{/etc/rc.local}文件而是用上面所说的相关文件代替。
 \chapter{各种应用}
 介绍Linux下面常用的各类程序，本章用到且的OBS中没有的源一般会写在\ref{repo}中。
@@ -202,13 +206,14 @@ Konsole中可能没有采用恰当的字体，导致显示的光标与文字中�
 
 更新时候常常会遇到以下情况：“将不会安装以下 51 个软件包的更新：blahblahblah”，若对此有疑问请
 参见\href{https://forum.suse.org.cn/viewtopic.php?t=2777&p=21896}{帮助新手理解为什么有些包不会被更新}
+
 \section{常用软件源}\label{repo}
 %添加软件源可以用zypper/YaST。YaST中只需要以下步骤：
 %YaST$\rightarrow$软件源$\rightarrow$添加$\rightarrow$下一步$\rightarrow$按照提示填写。
 
 
 \begin{compactdesc}
- \item[\href{http://mirrors.hust.edu.cn/packman/suse/openSUSE_13.1/}{Packman}]
+ \item[\href{http://ftp.twaren.net/Linux/Packman/}{Packman}]
  提供多媒体编解码器、播放器、Broadcom无线网卡驱动、游戏等
  \item[\href{http://download.opensuse.org/repositories/home:/opensuse_zh/openSUSE_13.1/}{opensuse\_zh}]
  此软件源由中文用户维护，提供国内常用的软件。
