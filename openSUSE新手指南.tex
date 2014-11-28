@@ -39,7 +39,7 @@
 \paragraph{root权限} 顾名思义，root权限就是最根本权限。也就是说，有了root权限，你基本上有了做任何事的权力。
 而执行某些命令，如安装、卸载软件包时需要root权限。此时你需要在命令前加sudo才能执行。
 默认情况下输入密码时不会有类似于\command{****}的提示符。你也可以用su这个命令切换到root用户，
-但是安全起见，在不必要的时候还是不要用su切换到root。
+但是安全起见，在不必要的时候还是不要用su切换到root。注意，在以root运行相关图形程序，需要使用\command{kdesu}来代替\command{sudo}！
 
 \paragraph{软件源} 软件源就是软件下载的来源。如果你已经添加的所有源里面都没有想要的软件包，但是在软
 件包搜索或其他源中有，那你只需添加相应的源，再刷新源即可在\zy 中找到。添加软件源的方法可以参见\href{https://zh.opensuse.org/SDB:%E6%B7%BB%E5%8A%A0%E8%BD%AF%E4%BB%B6%E6%BA%90}{添加软件源}
@@ -69,7 +69,18 @@ openSUSE下安装软件一般先用\zy 搜索，找到了便可以直接用\zy �
 \end{Verbatim}
 
 \paragraph{YaST} 这相当于Windows中的控制面板，让你无需打开命令行即可在图形界面完成包括软件包管理、用户和组管理等在内的各种任务。
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{./pic/yast.png} 
+\caption{YaST}
+\end{figure}
 \paragraph[软件包搜索与一键安装]{\href{http://software.opensuse.org/packages}{软件包搜索}与一键安装} 在这里你可以搜索你想要的软件包。
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{./pic/software.png} 
+\caption{软件包搜索与一键安装}
+\end{figure}
 与\zy 的区别在于可以找到你的源里面没有的软件。如果你利用\href{https://build.opensuse.org/}{OBS}编译了软件包，那么全世界的人都可以在这里使用它。
 火狐浏览器自带了这个搜索引擎。在软件包搜索中找到软件以后，你就可以点击一键安装按钮了。一
 键安装使得openSUSE中安装程序十分方便。在你进行软件包搜索后如果有多个源可以选择，同等条件下尽量选择
@@ -86,13 +97,22 @@ openSUSE下安装软件一般先用\zy 搜索，找到了便可以直接用\zy �
  含有大量额外的KDE程序。
  \item[\href{http://download.opensuse.org/repositories/GNOME:/Apps/openSUSE_13.2/}{GNOME:Apps}]
  含有大量GNOME程序。
- \item[\href{http://dl.google.com/linux/chrome/rpm/stable/i386}{Chrome~32位}|\href{http://dl.google.com/linux/chrome/rpm/stable/x86_64}{Chrome~64位}] 含有各种稳定版及非稳定版的Google Chrome浏览器
+ \item[\href{http://dl.google.com/linux/chrome/rpm/stable/i386}{Chrome~32位}|\href{http://dl.google.com/linux/chrome/rpm/stable/x86_64}{Chrome~64位}] 含有各种稳定版及非稳定版的Google Chrome
 \end{compactdesc}
 \subsection{KDE下启动程序的方法}
 本文所提到的内容一般是任选下列两种方式中的某一种启动。
 \paragraph{启动器} 全称Kickoff应用程序启动器，是类似于Windows中“开始菜单”的一个东西，一般可以用Alt+F1调出。新安装的程序可能暂时无法从这里启动。
+\begin{figure}[htbp]
+\centering
+\includegraphics{./pic/kick.png} 
+\caption{Kickoff应用程序启动器}
+\end{figure}
 \paragraph{krunner} 是类似于Windows中的“运行”的一个东西，一般可以用Alt+F2调出，之后输入你要运行或要搜索的程序即可。
-
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{./pic/runner.png} 
+\caption{krunner}
+\end{figure}
 \section{更新系统}
 为了使你的更新过程尽可能块，你可能需要添加镜像源，比如中国科大镜像，可以参考相
 应的\href{https://lug.ustc.edu.cn/wiki/mirrors/help/opensuse}{镜像使用帮助}之
@@ -102,7 +122,7 @@ openSUSE下安装软件一般先用\zy 搜索，找到了便可以直接用\zy �
 
 运行\zy 进行软件管理时，经常会由于系统后台正在运行一个zypper（系统只能同时运行一个zypper），影响你添加软件源等各种操作。你可以在终端中输入\command{sudo kill pid}把这个进程杀掉，pid是它的进程号。
 
-运行\command{zypper update}的时候常常会遇到以下情况：“将不会安装以下 51 个软件包的更新：blahblahblah”，若对此有疑问请参见\href{https://forum.suse.org.cn/viewtopic.php?t=2777&p=21896}{为什么有些包不会被更新}
+运行\command{zypper up}的时候常常会遇到以下情况：“将不会安装以下 51 个软件包的更新：blahblahblah”，若对此有疑问请参见\href{https://forum.suse.org.cn/viewtopic.php?t=2777&p=21896}{为什么有些包不会被更新}
 \section{本地化配置}
 用LiveCD安装，无法得到完整的中文KDE环境，所以你需要安装
 \begin{Verbatim}[formatcom=\color{codecolor}]
@@ -132,7 +152,7 @@ Fcitx是一个中文输入法框架，它对应的包为\soft{fcitx fcitx-config
 \end{Verbatim}
 具体请参考\href{https://linuxtoy.org/archives/how-to-use-vga-switcheroo-disable-video-card-linux-kms.html}{关闭独立显卡}。需要注意的是openSUSE并没有\command{/etc/rc.local}文件！你应该用类似于前述的\command{after.local}的文件代替。
 \chapter{各种应用}
-介绍Linux下面常用的各类程序。本章用到且OBS中没有的软件源一般会写在\ref{repo}中。
+介绍Linux下面常用的各类程序。本章用到且OBS中没有的软件源一般写在\ref{repo}中。
 \section{Linux下的QQ}
 腾讯官方提供的QQ for Linux早就无法使用了。webQQ已经挂了，SmartQQ基本半残，只能发送文字——总之很多方法都已经不行了。
 但是Chrome和Chromium目前可以运行某些安卓程序，经过测试手机QQ2011可以成功在上面运行。
@@ -179,7 +199,7 @@ Office：LibreOffice、永中Office或WPS。安装好WPS后需要下载\href{htt
 
 文本编辑器：Kate, VIM, Emacs etc.
 \section{教育程序}
-词典：推荐\soft{GoldenDict}\footnote{请用软件包搜索安装版本号大于1.5的版本，否则无法读取.mdx格式}，词典请上\href{http://pdawiki.com/forum/forum.php}{pdawiki}下载，
+词典：推荐\soft{GoldenDict}\footnote{请务必安装版本号大于1.5的版本或dev版本，否则无法读取.mdx格式}，词典请上\href{http://pdawiki.com/forum/forum.php}{pdawiki}下载，
 为了让你的词典更聪明，请下载\href{https://zpj.blog.ustc.edu.cn/wp-content/uploads/2014/02/wordsrule.tar.gz}{构词法}。
 
 科学计算、数据处理：\soft{octave}、\textsc{Matlab}、Mathematica、\soft{maxima}、R(\soft{R-base})
@@ -203,7 +223,7 @@ Office：LibreOffice、永中Office或WPS。安装好WPS后需要下载\href{htt
 KDE桌面环境中通过系统设置以及应用程序的设置可以极大的进行自定义，从而提高工作效率。
 \section{系统设置}
 \subsection{字体设置与管理}
-正式文档排版一般都需要宋体、黑体、仿宋、楷体这几种字体，从\href{http://pan.baidu.com/s/1mgiHWmO}{Helloworld.rpm}下载好后点击即可安装。开源的字体如Ubuntu字体(\soft{ubuntu-fonts})和文泉驿微米黑(\soft{wqy-microhei-fonts})等则可以直接在源中找到甚至默认已经安装好了。
+正式文档排版一般都需要宋体、黑体、仿宋、楷体这几种字体，从\href{http://pan.baidu.com/s/1mgiHWmO}{百度云}下载好后点击即可安装。开源的字体如Ubuntu字体(\soft{ubuntu-fonts})和文泉驿微米黑(\soft{wqy-microhei-fonts})等则可以直接在源中找到甚至默认已经安装好了。
 
 对于非root程序，在\menu{应用程序外观}--\menu{字体设置}中，你可以调节各种字体字号，当然对于屏幕显示字体最好选择无衬线字体，如Droid Sans Fallback、各种黑体。图\ref{myfont}就是我的相关字体设置。
 \begin{figure}[htbp]
@@ -212,7 +232,7 @@ KDE桌面环境中通过系统设置以及应用程序的设置可以极大的�
  \caption{我的字体设置}\label{myfont}
 \end{figure}
 
-对于root程序的字体，你需要在Konsole中以root运行\command{systemsettings}再单独设置。在openSUSE中为了能够以root运行相关图形程序，需要使用\command{kdesu}来代替\command{sudo}。
+对于root程序的字体，你需要在Konsole中以root运行\command{systemsettings}再单独设置。再次强调，在openSUSE中为了能够以root运行相关图形程序，需要使用\command{kdesu}来代替\command{sudo}。
 
 \subsection{桌面效果设置}
 在\menu{桌面效果}--\menu{全部效果}中可以启用各种桌面特效，如模糊效果、半透明效果、桌面立方效果和屏幕反色等功能。
@@ -236,11 +256,26 @@ KDE默认的截图快捷键是PrtScreen
 活动是比桌面大的一个层次，每个活动可以有自己的桌面。而桌面挂件就是一些放在面板或者桌面上的小工具。
 
 桌面空白处右键菜单中选择活动就可以管理活动。另外你可以通过Meta+Tab切换活动。
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{./pic/activity.png} 
+\caption{活动管理}
+\end{figure}
 
 Ctrl+F$i(i=1234\ldots)$切换到对应桌面。对应虚拟桌面的一些选项你可以在\menu{工作空间行为}--\menu{虚拟桌面}中进行设置。对于某个活动中的一组桌面有很多类型可选。在桌面空白处右键菜单中选择桌面设置后你可以选择切换各种布局类型（例如桌面图标就和Windows如出一辙）以及切换壁纸等。
-
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{./pic/virtualdesk.png} 
+\caption{多个虚拟桌面}
+\end{figure}
 在桌面空白处右键选择解锁部件，再点击右下角腰果图标后即可对部件进行管理。例如安装好\soft{redshift}及\soft{plasmoid-redshift}挂件后使你能够方便的调节屏幕色温，保护视力（你也可以让它隐藏在任务栏旁边的图标里）。
-添加部件时你既可以双击添加到面板，也可以托拽到桌面去。图\ref{mydesk}就是我的桌面截图。
+添加部件时你既可以双击添加到面板，也可以托拽到桌面去。
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{./pic/plasma.png} 
+\caption{添加桌面小挂件}
+\end{figure}
+
 \begin{figure}[htb]
  \centering
  \includegraphics[width=\textwidth]{./pic/desktop.png}
@@ -268,6 +303,12 @@ Dolphin是KDE下默认的文件浏览器，按Ctrl+M可以显示菜单栏，不�
 \paragraph{拆分视图} Dolphin的拆分视图功能使得在不同文件夹中复制文件等操作更加便捷。
 
 \paragraph{开启当前目录下的终端} 在Dolphin中按Shift+F4可以打开一个当前目录下的终端。
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{./pic/dolphin.png} 
+\caption{文件浏览器Dolphin}
+\end{figure}
 
 \subsection{Konsole}
 Konsole是KDE下常用的终端程序。Konsole中可能没有采用恰当的字体，导致显示的光标与文字中间有很大的间隔，如果你发现你的Konsole有这个问题，
