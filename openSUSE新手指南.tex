@@ -104,13 +104,13 @@ openSUSE下安装软件一般先用\zy 搜索，找到了便可以直接用\zy �
 \paragraph{启动器} 全称Kickoff应用程序启动器，是类似于Windows中“开始菜单”的一个东西，一般可以用Alt+F1调出。新安装的程序可能暂时无法从这里启动。
 \begin{figure}[htbp]
 \centering
-\includegraphics{./pic/kick.png} 
+\includegraphics{./pic/kickoff.png} 
 \caption{Kickoff应用程序启动器}
 \end{figure}
 \paragraph{krunner} 是类似于Windows中的“运行”的一个东西，一般可以用Alt+F2调出，之后输入你要运行或要搜索的程序即可。
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\textwidth]{./pic/runner.png} 
+\includegraphics[width=\textwidth]{./pic/krunner.png} 
 \caption{krunner}
 \end{figure}
 \section{更新系统}
@@ -123,7 +123,7 @@ openSUSE下安装软件一般先用\zy 搜索，找到了便可以直接用\zy �
 运行\zy 进行软件管理时，经常会由于系统后台正在运行一个zypper（系统只能同时运行一个zypper），影响你添加软件源等各种操作。你可以在终端中输入\command{sudo kill pid}把这个进程杀掉，pid是它的进程号。
 
 运行\command{zypper up}的时候常常会遇到以下情况：“将不会安装以下 51 个软件包的更新：blahblahblah”，若对此有疑问请参见\href{https://forum.suse.org.cn/viewtopic.php?t=2777&p=21896}{为什么有些包不会被更新}
-\section{本地化配置}
+\section{中文环境的配置}
 用LiveCD安装，无法得到完整的中文KDE环境，所以你需要安装
 \begin{Verbatim}[formatcom=\color{codecolor}]
     kde4-l10n-zh_CN translation-update-zh_CN yast2-trans-zh_CN
@@ -137,7 +137,11 @@ Fcitx是一个中文输入法框架，它对应的包为\soft{fcitx fcitx-config
 \href{https://www.librehat.com/fcitx-sogou-pinyin-cell-database-convert-import-guide/}{词库教程}%
 或者下载我编译好的\href{http://pan.baidu.com/s/1i3HtJ4T}{pyphrase}文件，复制
 到家目录的\command{.config/fcitx/pinyin/}中。
-
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{./pic/fcitx.png} 
+\caption{输入法}
+\end{figure}
 当然你也可以不使用默认的拼音输入法而使用Fcitx的谷歌拼音（\soft{goo\-gle\-pin\-yin}），
 搜狗拼音（\soft{so\-gou\-pin\-yin}）等输入法模块。对于大部分输入法你都可以使用云拼音（\soft{cloud\-pin\-yin}）等模块。
 安装好云拼音以后，只要在Fcitx的附加组件设置中配置好，你的输入法就可以利用云拼音输入了。注意，某些云拼音来源
@@ -194,14 +198,22 @@ Chromium：添加Packman源后再：
 文就是用\LaTeX排版的，怎么样，效果还不错吧。
 
 Office：LibreOffice、永中Office或WPS。安装好WPS后需要下载\href{http://pan.baidu.com/s/1mgC3A0C}{Symbols}字体\footnote{感谢lzkxuan给我们提供此字体包，原帖地址：\url{https://forum.suse.org.cn/viewtopic.php?f=6&t=2697}}并安装之。否则无法显示各种数学符号等。另外由于WPS是32位的程序，所以如果你是64位操作系统请额外安装\soft{cups-libs-32bit}，否则WPS无法输出文档为pdf。
-
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{./pic/wps.png} 
+\caption{WPS}
+\end{figure}
 邮件客户端：\soft{thunderbird}, \soft{kmail}
 
 文本编辑器：Kate, VIM, Emacs etc.
 \section{教育程序}
 词典：推荐\soft{GoldenDict}\footnote{请务必安装版本号大于1.5的版本或dev版本，否则无法读取.mdx格式}，词典请上\href{http://pdawiki.com/forum/forum.php}{pdawiki}下载，
 为了让你的词典更聪明，请下载\href{https://zpj.blog.ustc.edu.cn/wp-content/uploads/2014/02/wordsrule.tar.gz}{构词法}。
-
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{./pic/goldendict.png} 
+\caption{Goldendict}
+\end{figure}
 科学计算、数据处理：\soft{octave}、\textsc{Matlab}、Mathematica、\soft{maxima}、R(\soft{R-base})
 \section{网盘}
 \begin{compactitem}
@@ -211,6 +223,7 @@ Office：LibreOffice、永中Office或WPS。安装好WPS后需要下载\href{htt
  \item Wuala
  \item etc.欢迎补充
 \end{compactitem}
+
 \section{下载程序}
 \begin{compactdesc}
  \item[普通下载] KGet, Firefox的Down\-them\-all!插件，或者直接使用浏览器
@@ -329,4 +342,5 @@ KTouch是一个练习打字的程序。
  \item 自学Shell脚本语言，可以参考入门书籍TLCL：\href{http://home.ustc.edu.cn/~zpj/doc/Linux/The_Linux_Command_Line.pdf}{英文版}或\href{http://home.ustc.edu.cn/~zpj/doc/Linux/The_Linux_Command_Line(%e4%b8%ad%e6%96%87%e7%89%88).pdf}{中文版}
  \item 学习\soft{git}，有电子书：\href{http://git-scm.com/book/}{英文版HTML}或中文版\href{http://git-scm.com/book/zh}{HTML}/\href{http://liam0205.me/attachment/Git/progit.zh.pdf}{pdf}
 \end{compactitem}
+\listoffigures
 \end{document}

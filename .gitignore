@@ -1,4 +1,5 @@
 *.exe
+*.lof
 *.aux
 *.log
 *.backup
