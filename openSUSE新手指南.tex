@@ -1,4 +1,4 @@
-\documentclass[11pt,openany]{book}
+\documentclass[12pt,openany]{book}
 \usepackage{zpj}
 \usepackage{ulem}
 \usepackage{fancyvrb}
@@ -7,6 +7,7 @@
 \newcommand{\soft}[1]{\texttt{\textcolor{blue}{#1}}}
 \definecolor{codecolor}{RGB}{0,0,255}
 \newcommand{\simp}[2]{\command{#1}$=$\command{#2}}
+\newcommand{\menu}[1]{\textcolor{orange}{#1}}
 \begin{document}
 %\zihao{-4}
 \title{openSUSE新手指南}
@@ -73,6 +74,20 @@ openSUSE下安装软件一般先用\zy 搜索，找到了便可以直接用\zy �
 火狐浏览器自带了这个搜索引擎。在软件包搜索中找到软件以后，你就可以点击一键安装按钮了。一
 键安装使得openSUSE中安装程序十分方便。在你进行软件包搜索后如果有多个源可以选择，同等条件下尽量选择
 看起来比较官方的。\[\text{搜索软件}+\text{添加软件源}+\text{刷新软件源}+\text{安装软件}=\text{一条龙服务}\]
+
+\paragraph{常用软件源}\label{repo}
+
+\begin{compactdesc}
+ \item[\href{http://mirrors.hust.edu.cn/packman/suse/openSUSE_13.2/}{Packman}]
+ 提供多媒体编解码器、播放器、Broadcom无线网卡驱动、游戏等
+ \item[\href{http://download.opensuse.org/repositories/home:/opensuse_zh/openSUSE_13.2/}{opensuse\_zh}]
+ 此软件源由中文用户维护，提供wps等软件。
+ \item[\href{http://download.opensuse.org/repositories/KDE:/Extra/openSUSE_13.2/}{KDE:Extra}]
+ 含有大量额外的KDE程序。
+ \item[\href{http://download.opensuse.org/repositories/GNOME:/Apps/openSUSE_13.2/}{GNOME:Apps}]
+ 含有大量GNOME程序。
+ \item[\href{http://dl.google.com/linux/chrome/rpm/stable/i386}{Chrome~32位}|\href{http://dl.google.com/linux/chrome/rpm/stable/x86_64}{Chrome~64位}] 含有各种稳定版及非稳定版的Google Chrome浏览器
+\end{compactdesc}
 \subsection{KDE下启动程序的方法}
 本文所提到的内容一般是任选下列两种方式中的某一种启动。
 \paragraph{启动器} 全称Kickoff应用程序启动器，是类似于Windows中“开始菜单”的一个东西，一般可以用Alt+F1调出。新安装的程序可能暂时无法从这里启动。
@@ -85,9 +100,9 @@ openSUSE下安装软件一般先用\zy 搜索，找到了便可以直接用\zy �
 
 之后你就可以在终端中输入\command{sudo zypper up}更新系统了，这是很重要的一步。
 
-运行\zy 进行软件管理时，经常会由于系统后台正在运行一个zypper（系统只能同时运行一个zypper），
-影响你添加软件源等各种操作。你可以在终端中输入\command{sudo kill pid}把这个进程杀掉，pid是它的进程号。
+运行\zy 进行软件管理时，经常会由于系统后台正在运行一个zypper（系统只能同时运行一个zypper），影响你添加软件源等各种操作。你可以在终端中输入\command{sudo kill pid}把这个进程杀掉，pid是它的进程号。
 
+运行\command{zypper update}的时候常常会遇到以下情况：“将不会安装以下 51 个软件包的更新：blahblahblah”，若对此有疑问请参见\href{https://forum.suse.org.cn/viewtopic.php?t=2777&p=21896}{为什么有些包不会被更新}
 \section{本地化配置}
 用LiveCD安装，无法得到完整的中文KDE环境，所以你需要安装
 \begin{Verbatim}[formatcom=\color{codecolor}]
@@ -123,14 +138,14 @@ Fcitx是一个中文输入法框架，它对应的包为\soft{fcitx fcitx-config
 但是Chrome和Chromium目前可以运行某些安卓程序，经过测试手机QQ2011可以成功在上面运行。
 具体可以参考\href{http://huodong.ustc.edu.cn/Crx}{apk2crx}。
 \section{影音播放}
-{\color{orange}首先请安装好\href{https://lug.ustc.edu.cn/sites/opensuse-guide/codecs.php}{解码器}，否则某些格式将无法播放！}。执行完这一步你的Packman源
+{\color{orange}首先请安装好\href{https://lug.ustc.edu.cn/sites/opensuse-guide/codecs.php}{解码器}，否则某些格式将无法播放！}。安装解码器等的时候，可能会遇到依赖关系导致的冲突的问题。
+冲突的解决请参见\href{https://forum.suse.org.cn/viewtopic.php?t=2867&p=22491#p22491}{安装软件碰到冲突，应该如何选择解决方式?}执行完这一步你的Packman源
 就应该添加好了，如果你认为这个源太慢，请尝
 试Packman的\href{http://packman.links2linux.org/mirrors}{镜%
 像源}
 \begin{compactdesc}
- \item[电影] 推荐\soft{smplayer}，或者\soft{vlc}。
- \item[音乐] 推荐\soft{deepin-music}，启用\href{https://forum.suse.org.cn/viewtopic.php?f=7&t=2530}{百度插件}后便能够下载歌曲了。十分方便，
-当然你也可以使用默认的\soft{amarok}，但是前者搜索歌词，下载歌曲等功能更为强大
+ \item[电影] \soft{smplayer}，或者\soft{vlc}。
+ \item[音乐] 默认的\soft{amarok}与KDE环境集成较好。或者\soft{deepin-music}，它启用\href{https://forum.suse.org.cn/viewtopic.php?f=7&t=2530}{百度插件}后便能够下载歌曲了。
 \end{compactdesc}
 \section{浏览器}
 openSUSE下面默认装有Firefox浏览器，它可以通过安装附加组件来增强其功能。
@@ -154,7 +169,7 @@ Chromium：添加Packman源后再：
     sudo zypper in kile texlive-ctex texlive-savesym
 \end{Verbatim}
 更详细的配置过程请参
-考\LaTeX的\href{https://forum.suse.org.cn/viewtopic.php?f=6&t=2392&p=18750}{配置指南}。除此之外你还可
+考\LaTeX 的\href{https://forum.suse.org.cn/viewtopic.php?f=6&t=2392&p=18750}{配置指南}。除此之外你还可
 以用\TeX studio, \TeX works等各种IDE，当然VIM和Emacs这类通用编辑器也是可以的，只不过可能比较难配置。本
 文就是用\LaTeX排版的，怎么样，效果还不错吧。
 
@@ -166,8 +181,6 @@ Office：LibreOffice、永中Office或WPS。安装好WPS后需要下载\href{htt
 \section{教育程序}
 词典：推荐\soft{GoldenDict}\footnote{请用软件包搜索安装版本号大于1.5的版本，否则无法读取.mdx格式}，词典请上\href{http://pdawiki.com/forum/forum.php}{pdawiki}下载，
 为了让你的词典更聪明，请下载\href{https://zpj.blog.ustc.edu.cn/wp-content/uploads/2014/02/wordsrule.tar.gz}{构词法}。
-
-背单词：\soft{Parley}是一款很不错的背单词的程序%g，介绍可以参见
 
 科学计算、数据处理：\soft{octave}、\textsc{Matlab}、Mathematica、\soft{maxima}、R(\soft{R-base})
 \section{网盘}
@@ -185,67 +198,94 @@ Office：LibreOffice、永中Office或WPS。安装好WPS后需要下载\href{htt
  \item[ed2k] aMule
 \end{compactdesc}
 
-大部分下载都可以用百度网盘这个神器离线下载好，然后利用有一份田网友的\href{http://git.oschina.net/youyifentian/dupanlink}{百度网盘助手}显示百度网盘文件的直接链接。（不过这个助手有时候可能会失效）
-\chapter{更多}
-\section{字体显示及其美化}
-正式文档排版一般都需要宋体、黑体、仿宋、楷体这几种\href{http://pan.baidu.com/s/1mgiHWmO}{字体}，下载好后点击即可安装。开源的字体如\soft{ubuntu-fonts wqy-microhei-fonts}等则可以直接在源中找到甚至默认已经安装好了。
+大部分下载都可以用百度网盘这个神器离线下载好，然后再下载到本地。利用有一份田网友的\href{http://git.oschina.net/youyifentian/dupanlink}{百度网盘助手}脚本可以显示百度网盘文件的直接链接。（不过这个助手有时候可能会失效）
+\chapter{KDE桌面环境的一些配置}
+KDE桌面环境中通过系统设置以及应用程序的设置可以极大的进行自定义，从而提高工作效率。
+\section{系统设置}
+\subsection{字体设置与管理}
+正式文档排版一般都需要宋体、黑体、仿宋、楷体这几种字体，从\href{http://pan.baidu.com/s/1mgiHWmO}{Helloworld.rpm}下载好后点击即可安装。开源的字体如Ubuntu字体(\soft{ubuntu-fonts})和文泉驿微米黑(\soft{wqy-microhei-fonts})等则可以直接在源中找到甚至默认已经安装好了。
 
-在字体设置中，调节各种字体字号为你喜欢的，个人认为屏幕显示字体最好选择无衬线字体，如Droid Sans Fallback、各种黑体。
+对于非root程序，在\menu{应用程序外观}--\menu{字体设置}中，你可以调节各种字体字号，当然对于屏幕显示字体最好选择无衬线字体，如Droid Sans Fallback、各种黑体。图\ref{myfont}就是我的相关字体设置。
+\begin{figure}[htbp]
+ \centering
+ \includegraphics[width=\textwidth]{./pic/fontsettings.png}
+ \caption{我的字体设置}\label{myfont}
+\end{figure}
 
-为了使你的字体显示更加犀利，你需要将\soft{libfreetype6}相关的包的切换到opensuse\_zh源中，然后重新登录即可。可在YaST中进行操作。不过这样做可能会出某些BUG%例如字体在火狐中被压扁
-。另外openSUSE默认字体渲染已经很不错了，不调节也无所谓。
-\section{了解更多}
-\begin{compactitem}
- \item \href{https://lug.ustc.edu.cn/sites/opensuse-guide/}{非官方指南}详细的介绍了一些简单的内容
- \item 有问题可以搜索\href{https://zh.opensuse.org/%E9%A6%96%E9%A1%B5}{openSUSE中文维基}
- \item \href{https://forum.suse.org.cn/}{openSUSE中文论坛}是openSUSE中文的官方论坛，坛主为MargueriteSu。
- \item 利用\href{https://google.com}{Google}搜索解决问题（如果无法打开，请尝试\href{https://code.google.com/p/goagent/}{Goagent}）
- \item 自学Shell脚本语言，可以参考入门书籍TLCL：\href{http://home.ustc.edu.cn/~zpj/doc/Linux/The_Linux_Command_Line.pdf}{英文版}或\href{http://home.ustc.edu.cn/~zpj/doc/Linux/The_Linux_Command_Line(%e4%b8%ad%e6%96%87%e7%89%88).pdf}{中文版}
- \item 学习git，有电子书：\href{http://git-scm.com/book/}{英文版HTML}或中文版\href{http://git-scm.com/book/zh}{HTML}/\href{http://liam0205.me/attachment/Git/progit.zh.pdf}{pdf}
-\end{compactitem}
-\section{常见问题}
-Konsole中可能没有采用恰当的字体，导致显示的光标与文字中间有很大的间隔，如果你发现你的Konsole有这个问题，
-请依次进入Konsole的以下菜单：设置$\rightarrow$编辑当前方案$\rightarrow$外观$\rightarrow$选择
-字体$\rightarrow$选中Droid sans Mono或其他等宽字体$\rightarrow$确定$\rightarrow$应用。
+对于root程序的字体，你需要在Konsole中以root运行\command{systemsettings}再单独设置。在openSUSE中为了能够以root运行相关图形程序，需要使用\command{kdesu}来代替\command{sudo}。
 
-安装解码器等的时候，可能会遇到依赖关系导致的冲突的问题。
-冲突的解决请参见\href{https://forum.suse.org.cn/viewtopic.php?t=2867&p=22491#p22491}{安装软件碰到冲突，应该如何选择解决方式?}
+\subsection{桌面效果设置}
+在\menu{桌面效果}--\menu{全部效果}中可以启用各种桌面特效，如模糊效果、半透明效果、桌面立方效果和屏幕反色等功能。
 
-更新时候常常会遇到以下情况：“将不会安装以下 51 个软件包的更新：blahblahblah”，若对此有疑问请
-参见\href{https://forum.suse.org.cn/viewtopic.php?t=2777&p=21896}{为什么有些包不会被更新}
+注意，过多的效果可能导致运行缓慢，如果您觉得您的电脑运行缓慢请关闭某些特效。
+\subsection{开机自启动管理}
+在\menu{开机和关机}--\menu{自动启动}中可以管理你的启动项。
 
-\section{常用软件源}\label{repo}
-%添加软件源可以用\zy 。YaST中只需要以下步骤：
-%YaST$\rightarrow$软件源$\rightarrow$添加$\rightarrow$下一步$\rightarrow$按照提示填写。
+在\menu{开机和关机}--\menu{会话管理}中可以关掉或者打开开机时恢复上一次会话。如果你选择打开，那么上次注销或关机时没有关闭的程序在下次登录后会被启动。但这样显然就拖慢了开机速度。
+\subsection{快捷方式和手势}
+在\menu{快捷方式和手势}--\menu{自定义快捷键}中你可以为程序或命令设置相应的快捷键，这样你就可以抛弃桌面图标了——所有常用的程序通过快捷键启动，非常用的程序用启动器或Krunner启动。
 
+在\menu{快捷方式和手势}--\menu{标准键盘快捷键}中你可以设置KDE程序内通用的快捷键，如查找、上一页、第一页、保存、退出等。
 
-\begin{compactdesc}
- \item[\href{http://mirrors.hust.edu.cn/packman/suse/openSUSE_13.2/}{Packman}]
- 提供多媒体编解码器、播放器、Broadcom无线网卡驱动、游戏等
- \item[\href{http://download.opensuse.org/repositories/home:/opensuse_zh/openSUSE_13.2/}{opensuse\_zh}]
- 此软件源由中文用户维护，提供国内常用的软件。
- \item[\href{http://download.opensuse.org/repositories/KDE:/Extra/openSUSE_13.2/}{KDE:Extra}]
- 含有大量额外的KDE程序。
- \item[\href{http://download.opensuse.org/repositories/GNOME:/Apps/openSUSE_13.2/}{GNOME:Apps}]
- 含有大量GNOME程序。
- \item[\href{http://dl.google.com/linux/chrome/rpm/stable/i386}{Chrome~32位}|\href{http://dl.google.com/linux/chrome/rpm/stable/x86_64}{Chrome~64位}] 含有各种稳定版及非稳定版的Google Chrome浏览器
-\end{compactdesc}
-\section{KDE下的一些奇技淫巧}
-\paragraph{快捷键} 在快捷键设置中你可以为程序或命令设置快捷键，这样你就可以抛弃桌面图标了——常用程序快捷键启动，非常用程序用启动器或Krunner启动。
+在\menu{快捷方式和手势}--\menu{全局键盘快捷键}中你可以设置各种KDE组件的快捷键。例如在KWin中设置好切换桌面与窗口的快捷键你就可以切换起来如鱼得水。例如我的切换桌面到上下左右采用的是类似于Vim的Ctrl+Alt+k/j/h/l。这一切你都可以自由定制。
 
+KDE默认的截图快捷键是PrtScreen
+\subsection{外观设置}
+在工作空间外观或者应用程序外观中可以调节程序的外观。
+\subsection{活动、桌面与Plasma桌面挂件}
+活动是比桌面大的一个层次，每个活动可以有自己的桌面。而桌面挂件就是一些放在面板或者桌面上的小工具。
+
+桌面空白处右键菜单中选择活动就可以管理活动。另外你可以通过Meta+Tab切换活动。
+
+Ctrl+F$i(i=1234\ldots)$切换到对应桌面。对应虚拟桌面的一些选项你可以在\menu{工作空间行为}--\menu{虚拟桌面}中进行设置。对于某个活动中的一组桌面有很多类型可选。在桌面空白处右键菜单中选择桌面设置后你可以选择切换各种布局类型（例如桌面图标就和Windows如出一辙）以及切换壁纸等。
+
+在桌面空白处右键选择解锁部件，再点击右下角腰果图标后即可对部件进行管理。例如安装好\soft{redshift}及\soft{plasmoid-redshift}挂件后使你能够方便的调节屏幕色温，保护视力（你也可以让它隐藏在任务栏旁边的图标里）。
+添加部件时你既可以双击添加到面板，也可以托拽到桌面去。图\ref{mydesk}就是我的桌面截图。
+\begin{figure}[htb]
+ \centering
+ \includegraphics[width=\textwidth]{./pic/desktop.png}
+ \caption{我的桌面}\label{mydesk}
+\end{figure}
+
+\section{特定KDE程序的设置}
+基本所有的KDE程序都可以进行详细的配置，比如工具栏等。在工具栏中添加好常用的图标可以让你每次用的时候都少点几次鼠标。
+\subsection{Okular和Kile的配合设置}
+编写\LaTeX文档时常用Okular作为pdf阅读器，Kile等作为编辑器。\href{http://zpj.blog.ustc.edu.cn/?p=338}{这里}介绍了Kile与Okular的正反向搜索设置。
+
+\subsection{嵌入式终端}
+在Kile中点击右下侧的消息栏上的Konsole即出现嵌入式终端。
+
+Kate和Dolphin中按F4即可启用/退出嵌入式终端。
+
+\subsection{Dolphin}
+Dolphin是KDE下默认的文件浏览器，按Ctrl+M可以显示菜单栏，不然就是中看不中用的典型。
 \paragraph{Dolphin中的缩略图} Dolphin可以开启缩略图功能，在配置菜单的常规中的预览中选中相应条目即可。如果没有你想要的条目比如pdf，那么你可以用thumbnail为关键字，搜索源中相应的软件包并安装即可。比如：
 \begin{compactenum}
  \item \soft{kffmpegthumbnailer} 生成视频文件缩略图
  \item \soft{kdegraphics-thumbnailers} 生成pdf等文件缩略图
  \item \soft{kde-thumbnailer-epub} 生成epub文件缩略图
 \end{compactenum}
-
-
-\paragraph{屏幕反色} 在桌面效果的全部效果中可以设置反色功能，之后只需一个快捷键切换到夜间模式。
-
-\paragraph{嵌入式终端} Kate、Kile等编辑器可以嵌入一个迷你终端，十分方便。
-
 \paragraph{拆分视图} Dolphin的拆分视图功能使得在不同文件夹中复制文件等操作更加便捷。
 
-\paragraph{色温调节} \soft{redshift}及其\soft{plasmoid-redshift}挂件使你能够方便的调节屏幕色温，保护视力。
+\paragraph{开启当前目录下的终端} 在Dolphin中按Shift+F4可以打开一个当前目录下的终端。
+
+\subsection{Konsole}
+Konsole是KDE下常用的终端程序。Konsole中可能没有采用恰当的字体，导致显示的光标与文字中间有很大的间隔，如果你发现你的Konsole有这个问题，
+请依次进入Konsole的以下菜单：设置$\rightarrow$编辑当前方案$\rightarrow$外观$\rightarrow$选择
+字体$\rightarrow$选中Droid sans Mono或其他等宽字体$\rightarrow$确定$\rightarrow$应用。
+
+在Konsole的编辑配置方案中你可以选择不同的颜色方案等，适用于不同环境。你甚至可以在管理配置方案中为每个方案单独设置一个快捷键。
+\subsection{KDE下的一些教育程序}
+Parley是一个背单词的程序，可以参考我对它的\href{http://home.ustc.edu.cn/~zpj/resource/%E8%AF%8D%E5%BA%93/}{介绍}。
+
+KTouch是一个练习打字的程序。
+
+\chapter{了解更多}
+\begin{compactitem}
+ \item 通过\href{https://lug.ustc.edu.cn/sites/opensuse-guide/}{非官方指南}详细的介绍了一些简单的内容
+ \item 有问题可以搜索\href{https://zh.opensuse.org/%E9%A6%96%E9%A1%B5}{openSUSE中文维基}
+ \item \href{https://forum.suse.org.cn/}{openSUSE中文论坛}
+ \item 自学Shell脚本语言，可以参考入门书籍TLCL：\href{http://home.ustc.edu.cn/~zpj/doc/Linux/The_Linux_Command_Line.pdf}{英文版}或\href{http://home.ustc.edu.cn/~zpj/doc/Linux/The_Linux_Command_Line(%e4%b8%ad%e6%96%87%e7%89%88).pdf}{中文版}
+ \item 学习\soft{git}，有电子书：\href{http://git-scm.com/book/}{英文版HTML}或中文版\href{http://git-scm.com/book/zh}{HTML}/\href{http://liam0205.me/attachment/Git/progit.zh.pdf}{pdf}
+\end{compactitem}
 \end{document}
