@@ -2,8 +2,7 @@
 \usepackage{zpj}
 \usepackage{ulem}
 \usepackage{fancyvrb}
-\definecolor{dred}{RGB}{0,0,100}
-\usepackage[linkcolor=dred,citecolor=dred,urlcolor=dred]{hyperref}
+\usepackage[linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
 \definecolor{codec}{RGB}{100,64,0}
 \definecolor{dgreen}{HTML}{005545}
 \newcommand{\command}[1]{\texttt{\textcolor{codec}{#1}}}
@@ -202,7 +201,7 @@ Chromium：添加Packman源后再：
 以用\TeX studio, \TeX works等各种IDE，当然VIM和Emacs这类通用编辑器也是可以的，只不过可能比较难配置。本
 文就是用\LaTeX排版的，怎么样，效果还不错吧。
 
-Office：LibreOffice、永中Office或WPS。安装好WPS后需要下载\href{http://pan.baidu.com/s/1mgC3A0C}{Symbols}字体\footnote{感谢lzkxuan给我们提供此字体包，原帖地址：\url{https://forum.suse.org.cn/viewtopic.php?f=6&t=2697}}并安装之。否则无法显示各种数学符号等。另外由于WPS是32位的程序，所以如果你是64位操作系统请额外安装\soft{cups-libs-32bit}，否则WPS无法输出文档为pdf。
+Office：LibreOffice、永中Office或WPS。安装好WPS后需要下载\href{http://pan.baidu.com/s/1ntMEU2P}{Symbols}字体并安装之。否则无法显示各种数学符号等。另外由于WPS是32位的程序，所以如果你是64位操作系统请额外安装\soft{cups-libs-32bit}，否则WPS无法输出文档为pdf。
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{./pic/wps.png} 
@@ -241,7 +240,7 @@ Office：LibreOffice、永中Office或WPS。安装好WPS后需要下载\href{htt
 KDE桌面环境中通过系统设置以及应用程序的设置可以极大的进行自定义，从而提高工作效率。
 \section{系统设置}
 \subsection{字体设置与管理}
-正式文档排版一般都需要宋体、黑体、仿宋、楷体这几种字体，从\href{http://pan.baidu.com/s/1mgiHWmO}{百度云}下载好后点击即可安装。开源的字体如Ubuntu字体(\soft{ubuntu-fonts})和文泉驿微米黑(\soft{wqy-microhei-fonts})等则可以直接在源中找到甚至默认已经安装好了。
+正式文档排版一般都需要宋体、黑体、仿宋、楷体这些字体，从\href{http://pan.baidu.com/s/1mgiHWmO}{百度云}下载好后点击即可安装。开源字体如Ubuntu字体(\soft{ubuntu-fonts})和文泉驿微米黑(\soft{wqy-microhei-fonts})等则可以直接在源中找到甚至默认已经安装好了。
 
 对于非root程序，在\menu{应用程序外观}\me\menu{字体设置}中，你可以调节各种字体字号，当然对于屏幕显示字体最好选择无衬线字体，如Droid Sans Fallback、各种黑体。图\ref{myfont}就是我的相关字体设置。
 \begin{figure}[htbp]
@@ -289,7 +288,7 @@ KDE默认的截图快捷键是PrtSc，它会调用ksnapshot截图工具。
 \caption{活动管理}\label{activity}
 \end{figure}
 
-Ctrl+F$i(i=1234\ldots)$切换到对应桌面。对应虚拟桌面的一些选项你可以在\menu{工作空间行为}\me\menu{虚拟桌面}中进行设置。对于某个活动中的一组桌面有很多类型可选。在桌面空白处右键菜单中选择桌面设置后你可以选择切换各种布局类型（例如桌面图标就和Windows如出一辙）以及切换壁纸等。
+按Ctrl+F$i(i=1234\ldots)$可以切换到对应桌面。对应虚拟桌面的一些选项你可以在\menu{工作空间行为}\me\menu{虚拟桌面}中进行设置。对于某个活动中的一组桌面有很多类型可选。在桌面空白处右键菜单中选择桌面设置后你可以选择切换各种布局类型（例如桌面图标就和Windows如出一辙）以及切换壁纸等。
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{./pic/virtualdesk.png} 
@@ -345,7 +344,7 @@ Konsole是KDE下常用的终端程序。Konsole中可能没有采用恰当的字
 
 在Konsole的编辑配置方案中你可以选择不同的颜色方案等，适用于不同环境。你甚至可以在管理配置方案中为每个方案单独设置一个快捷键。
 \subsection{KDE下的一些教育程序}
-Parley是一个背单词的程序，可以参考我对它的\href{http://home.ustc.edu.cn/~zpj/resource/%E8%AF%8D%E5%BA%93/}{介绍}。
+Parley是一个背单词的程序，可以参考我对它的\href{http://zpj.blog.ustc.edu.cn/?p=294}{介绍}。
 
 KTouch是一个练习打字的程序。
 
