@@ -79,16 +79,15 @@ openSUSE下安装软件一般先用\zy 搜索，找到了便可以直接用\zy �
 \caption{YaST}\label{yast}
 \end{figure}
 \paragraph[软件包搜索与一键安装]{\href{http://software.opensuse.org/packages}{软件包搜索}与一键安装} 在这里你可以搜索你想要的软件包。
-
-\begin{figure}[htb]
-\centering
-\includegraphics[width=\textwidth]{./pic/software.png} 
-\caption{软件包搜索与一键安装}\label{soft}
-\end{figure}
 与\zy 的区别在于可以找到你的源里面没有的软件。如果你利用\href{https://build.opensuse.org/}{OBS}编译了软件包，那么全世界的人都可以在这里使用它。
 火狐浏览器自带了这个搜索引擎。在软件包搜索中找到软件以后，你就可以点击一键安装按钮了。一
 键安装使得openSUSE中安装程序十分方便。在你进行软件包搜索后如果有多个源可以选择，同等条件下尽量选择
 看起来比较官方的。\[\text{搜索软件}+\text{添加软件源}+\text{刷新软件源}+\text{安装软件}=\text{一条龙服务}\]
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{./pic/software.png} 
+\caption{Firefox中的软件包搜索}\label{soft}
+\end{figure}
 
 \paragraph{常用软件源}\label{repo}
 
@@ -208,8 +207,6 @@ Office：LibreOffice、永中Office或WPS。安装好WPS后需要下载\href{htt
 \caption{WPS}\label{wps}
 \end{figure}
 邮件客户端：\soft{thunderbird}, \soft{kmail}
-
-文本编辑器：Kate, VIM, Emacs etc.
 \section{教育程序}
 词典：推荐\soft{GoldenDict}\footnote{请务必安装版本号大于1.5的版本或dev版本，否则无法读取.mdx格式}，词典请上\href{http://pdawiki.com/forum/forum.php}{pdawiki}下载，
 为了让你的词典更聪明，请下载\href{https://zpj.blog.ustc.edu.cn/wp-content/uploads/2014/02/wordsrule.tar.gz}{构词法}。
@@ -219,7 +216,7 @@ Office：LibreOffice、永中Office或WPS。安装好WPS后需要下载\href{htt
 \caption{Goldendict}\label{goldendict}
 \end{figure}
 科学计算、数据处理：\soft{octave}、\textsc{Matlab}、Mathematica、\soft{maxima}、R(\soft{R-base})
-\section{网盘}
+\section{网盘与同步盘}
 \begin{compactitem}
  \item 坚果云\soft{nutstore}
  \item 百度云在openSUSE下有非官方的\soft{bcloud}客户端
@@ -228,7 +225,7 @@ Office：LibreOffice、永中Office或WPS。安装好WPS后需要下载\href{htt
  \item etc.欢迎补充
 \end{compactitem}
 
-\section{下载程序}
+\section{下载工具}
 \begin{compactdesc}
  \item[普通下载] KGet, Firefox的Down\-them\-all!插件，或者直接使用浏览器
  \item[BT] KTorrent, Deluge, Transmition
@@ -239,7 +236,7 @@ Office：LibreOffice、永中Office或WPS。安装好WPS后需要下载\href{htt
 \chapter{KDE桌面环境的一些配置}
 KDE桌面环境中通过系统设置以及应用程序的设置可以极大的进行自定义，从而提高工作效率。
 \section{系统设置}
-\subsection{字体设置与管理}
+\subsection{字体设置}
 正式文档排版一般都需要宋体、黑体、仿宋、楷体这些字体，从\href{http://pan.baidu.com/s/1mgiHWmO}{百度云}下载好后点击即可安装。开源字体如Ubuntu字体(\soft{ubuntu-fonts})和文泉驿微米黑(\soft{wqy-microhei-fonts})等则可以直接在源中找到甚至默认已经安装好了。
 
 对于非root程序，在\menu{应用程序外观}\me\menu{字体设置}中，你可以调节各种字体字号，当然对于屏幕显示字体最好选择无衬线字体，如Droid Sans Fallback、各种黑体。图\ref{myfont}就是我的相关字体设置。
@@ -259,7 +256,7 @@ KDE桌面环境中通过系统设置以及应用程序的设置可以极大的�
 在\menu{开机和关机}\me\menu{自动启动}中可以管理你的启动项。
 
 在\menu{开机和关机}\me\menu{会话管理}中可以关掉或者打开开机时恢复上一次会话。如果你选择打开，那么上次注销或关机时没有关闭的程序在下次登录后会被启动。但这样显然就拖慢了开机速度。
-\subsection{快捷方式和手势}
+\subsection{快捷键的设置}
 在\menu{快捷方式和手势}\me\menu{自定义快捷键}中你可以为程序或命令设置相应的快捷键，这样你就可以抛弃桌面图标了——所有常用的程序通过快捷键启动，非常用的程序用启动器或Krunner启动。
 
 在\menu{快捷方式和手势}\me\menu{标准键盘快捷键}中你可以设置KDE程序内通用的快捷键，如查找、上一页、第一页、保存、退出等。
