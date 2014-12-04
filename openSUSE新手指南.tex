@@ -2,19 +2,18 @@
 \usepackage{zpj}
 \usepackage{ulem}
 \usepackage{fancyvrb}
-\usepackage[linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
-\definecolor{codec}{RGB}{100,64,0}
-\definecolor{dgreen}{HTML}{005545}
-\newcommand{\command}[1]{\texttt{\textcolor{codec}{#1}}}
+\usepackage[linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}%超链接等各种颜色设为纯蓝
+\definecolor{codec}{RGB}{100,64,0}%color for code
+\definecolor{dgreen}{HTML}{005545}%dark green
+\newcommand{\command}[1]{\texttt{\textcolor{codec}{#1}}}%定义命令的格式
 \newcommand{\zy}{zypper或YaST}
-\newcommand{\soft}[1]{\texttt{\textcolor{dgreen}{#1}}}
-\newcommand{\simp}[2]{\command{#1}$=$\command{#2}}
-\newcommand{\menu}[1]{\fbox{#1}}
-\newcommand{\me}{$\rightarrow$}
-\newcommand{\emp}[1]{\textbf{#1}}
+\newcommand{\soft}[1]{\texttt{\textcolor{dgreen}{#1}}}%定义软件包的格式
+\newcommand{\simp}[2]{\command{#1}$=$\command{#2}}%定义选项的等价简化
+\newcommand{\menu}[1]{\fbox{#1}}%定义菜单项的格式
+\newcommand{\me}{$\rightarrow$}%定义右箭头
+\newcommand{\emp}[1]{\textbf{#1}}%定义强调
 \begin{document}
 \title{openSUSE新手指南}
-%\author{朱沛俊\thanks{我的邮箱：\href{mailto:zpj.ustc@gmail.com}{zpj.ustc@gmail.com}}}
 \author{\href{mailto:zpj.ustc@gmail.com}{\texttt{zpj.ustc}}}
 \maketitle
 \chapter*{关于}
@@ -196,6 +195,12 @@ Fcitx是一个中文输入法框架，它对应的包为\soft{fcitx fcitx-config
 \paragraph{科学计算、数据处理}\soft{octave}、\textsc{Matlab}、Mathematica、\soft{maxima}、R(\soft{R-base})
 \section{图像处理}
 \paragraph{点阵图}\soft{gimp}
+
+\begin{figure}[htbp!]
+\centering
+\includegraphics[width=\textwidth]{./pic/gimp.png} 
+\caption{Gimp}\label{gimp}
+\end{figure}
 
 \paragraph{矢量图}\soft{inkscape}
 \section{浏览器}
