@@ -1,2 +1,2 @@
-lftp pdf
-put openSUSE新手指南.pdf
+#/usr/bin/env bash
+lftp -c "lftp pdf;put openSUSE新手指南.pdf"
