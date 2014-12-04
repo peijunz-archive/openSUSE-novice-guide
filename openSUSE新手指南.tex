@@ -1,4 +1,4 @@
-\documentclass[11pt,openany,draft]{book}
+\documentclass[11pt,openany]{book}
 \usepackage{zpj}
 \usepackage{ulem}
 \usepackage{fancyvrb}
@@ -64,7 +64,7 @@ openSUSE下安装软件一般先用\zy 搜索，找到了便可以直接用\zy �
  \item \simp{remove}{rm}
 \end{compactitem}
 
-想要了解更多命令及其选项可以用\command{zypper --help}查看相关帮助。如果不想每次运行\zy （比如搜索软件包）的时候都自动刷新一次，你可以禁用所有软件源的自动刷新：
+使用\command{in}选项时既可以安装源中的软件也可以安装当前目录下的rpm软件包。想要了解更多命令及其选项可以用\command{zypper --help}查看相关帮助。如果不想每次运行\zy （比如搜索软件包）的时候都自动刷新一次，你可以禁用所有软件源的自动刷新：
 \begin{Verbatim}[formatcom=\color{codec}]
     zypper mr -Ra
 \end{Verbatim}
@@ -106,7 +106,7 @@ openSUSE下安装软件一般先用\zy 搜索，找到了便可以直接用\zy �
 新安装的程序可能暂时无法从这里启动。
 \begin{figure}[htbp!]
 \centering
-\includegraphics{./pic/kickoff.png} 
+\includegraphics[width=0.9\textwidth]{./pic/kickoff.png} 
 \caption{Kickoff应用程序启动器}
 \end{figure}
 
@@ -183,20 +183,15 @@ Fcitx是一个中文输入法框架，它对应的包为\soft{fcitx fcitx-config
 以用\TeX studio, \TeX works，VIM和Emacs等各种编辑器。本文就使用\LaTeX排版。
 
 \paragraph{Office}LibreOffice、永中Office或WPS。安装好WPS后需要下载\href{http://pan.baidu.com/s/1ntMEU2P}{Symbols}字体并安装之。否则无法显示各种数学符号等。另外由于WPS是32位的程序，所以如果你是64位操作系统请额外安装\soft{cups-libs-32bit}，否则WPS无法输出文档为pdf。
-\begin{figure}[htbp!]
-\centering
-\includegraphics[width=\textwidth]{./pic/wps.png} 
-\caption{WPS}\label{wps}
-\end{figure}
+\section{教育程序}
+\paragraph{词典} 推荐\soft{goldendict}\footnote{请务必安装版本号大于1.5的版本或dev版本，否则无法读取.mdx格式}，词典请上\href{http://pdawiki.com/forum/forum.php}{pdawiki}下载，
+为了让你的词典更聪明，请下载\href{https://zpj.blog.ustc.edu.cn/wp-content/uploads/2014/02/wordsrule.tar.gz}{构词法}。除此之外还有Stardict，命令行下有sdcv。
+
 \begin{figure}[htbp!]
 \centering
 \includegraphics[width=\textwidth]{./pic/goldendict.png} 
 \caption{Goldendict}\label{goldendict}
 \end{figure}
-\section{教育程序}
-\paragraph{词典}推荐\soft{GoldenDict}\footnote{请务必安装版本号大于1.5的版本或dev版本，否则无法读取.mdx格式}，词典请上\href{http://pdawiki.com/forum/forum.php}{pdawiki}下载，
-为了让你的词典更聪明，请下载\href{https://zpj.blog.ustc.edu.cn/wp-content/uploads/2014/02/wordsrule.tar.gz}{构词法}。
-
 
 \paragraph{科学计算、数据处理}\soft{octave}、\textsc{Matlab}、Mathematica、\soft{maxima}、R(\soft{R-base})
 \section{图像处理}
@@ -225,7 +220,7 @@ openSUSE下面默认装有Firefox浏览器，它可以通过安装附加组件�
 大部分下载都可以用百度网盘这个神器离线下载好，然后再下载到本地。利用有一份田网友的\href{http://git.oschina.net/youyifentian/dupanlink}{百度网盘助手}脚本可以显示百度网盘文件的直接链接。（不过这个助手有时候可能会失效）
 \section{网盘与同步盘}
 \begin{compactitem}
- \item 坚果云\soft{nutstore}
+ \item 坚果云
  \item 百度云在openSUSE下有非官方的\soft{bcloud}客户端
  \item Dropbox
  \item Wuala
@@ -240,7 +235,7 @@ openSUSE下面默认装有Firefox浏览器，它可以通过安装附加组件�
 KDE桌面环境中通过系统设置以及应用程序的设置可以极大的进行自定义，从而提高工作效率。
 \section{系统设置}
 \subsection{字体设置}
-正式文档排版一般都需要宋体、黑体、仿宋、楷体这些字体，从\href{http://pan.baidu.com/s/1mgiHWmO}{百度云}下载好后点击即可安装。开源字体如Ubuntu字体(\soft{ubuntu-fonts})和文泉驿微米黑(\soft{wqy-microhei-fonts})等则可以直接在源中找到甚至默认已经安装好了。
+正式文档排版一般都需要宋体、黑体、仿宋、楷体这些字体，从\href{http://pan.baidu.com/s/1mgiHWmO}{百度云}下载好后点击或者用zypper即可安装。开源字体如Ubuntu字体(\soft{ubuntu-fonts})和文泉驿微米黑(\soft{wqy-microhei-fonts})等则可以直接在源中找到甚至默认已经安装好了。
 
 对于非root程序，在\menu{应用程序外观}\me\menu{字体设置}中，你可以调节各种字体字号，当然对于屏幕显示字体最好选择无衬线字体，如Droid Sans Fallback、各种黑体。图\ref{myfont}就是我的相关字体设置。
 \begin{figure}[htbp!]
