@@ -44,7 +44,7 @@ openSUSE下安装软件一般先用\zy 搜索，找到了便可以直接用\zy �
     zypper mr -Ra
 \end{Verbatim}
 
-\paragraph{YaST} 这相当于Windows中的控制面板，让你无需打开命令行即可在图形界面完成包括软件包管理、用户和组管理等在内的各种任务。
+\paragraph{YaST} 这相当于Windows中的控制面板，让你无需打开命令行即可在图形界面完成包括软件包管理、用户和组管理等在内的各种任务。在软件管理方面，你可以使用YaST直观的切换软件包的不同版本。
 \begin{figure}[htbp!]
 \centering
 \includegraphics[width=\textwidth]{./pic/yast.png} 
@@ -101,7 +101,7 @@ openSUSE下安装软件一般先用\zy 搜索，找到了便可以直接用\zy �
 
 运行\zy 进行软件管理时，经常会由于系统后台正在运行一个zypper（系统只能同时运行一个zypper），影响你添加软件源等各种操作。你可以在终端中输入\command{sudo kill pid}把这个进程杀掉，pid是它的进程号。
 
-运行\command{zypper up}的时候常常会遇到以下情况：“将不会安装以下 51 个软件包的更新：blahblahblah”，若对此有疑问请参见\href{https://forum.suse.org.cn/viewtopic.php?t=2777&p=21896}{为什么有些包不会被更新}
+由于openSUSE中可能有一个软件包的不同厂商的版本，而openSUSE具有厂商黏性，因此运行更新的时候常常会遇到类似的情况：“将不会安装以下 51个软件包的更新：amarok apper bbswitch\ldots”，若对此有疑问请参见\href{https://forum.suse.org.cn/viewtopic.php?t=2777&p=21896}{为什么有些包不会被更新}
 \section{中文环境的配置}
 用LiveCD安装，无法得到完整的中文KDE环境，所以你需要安装
 \begin{Verbatim}[formatcom=\color{codec}]
@@ -122,12 +122,14 @@ Fcitx是一个中文输入法框架，它对应的包为\soft{fcitx fcitx-config
 \caption{输入法}\label{fcitx}
 \end{figure}
 
-当然你也可以不使用默认的拼音输入法而使用Fcitx的谷歌拼音（\soft{goo\-gle\-pin\-yin}），
-搜狗拼音（\soft{so\-gou\-pin\-yin}）等输入法模块。对于大部分输入法你都可以使用云拼音（\soft{cloud\-pin\-yin}）等模块。
+当然你也可以不使用默认的拼音输入法而使用Fcitx的lib\-pin\-yin、谷歌拼音、搜狗拼音等输入法模块。对于大部分输入法你都可以使用云拼音（\soft{cloud\-pin\-yin}）等模块。
 安装好云拼音以后，只要在Fcitx的附加组件设置中配置好，你的输入法就可以利用云拼音输入了。注意，某些云拼音来源
 可能会失效，如果云拼音无法使用可能就是因为这个原因。
+
+其他输入法可能没有记忆学习功能，因此不能记录你的输入记录等，所以最好使用\emp{拼音}输入法+一个较好的词库+云拼音。
 \section[双显卡]{双显卡关闭独立显卡}
 \paragraph{NVIDIA} 如果你的显卡支持Bumblebee，请参见\href{https://zh.opensuse.org/SDB:Bumblebee}{SDB:Bumblebee}，建议新手加源安装。
+%从http://cn.download.nvidia.com/XFree86/Linux-x86_64/$VERSION/NVIDIA-Linux-x86_64-$VERSION.run（对于64位系统）下载驱动较快
 
 \paragraph{AMD} 如果你用的是开源驱动的话，在\command{/etc/init.d/after.local}后面加下面两行，那么开机后将会自动运行以关闭独显：
 \begin{Verbatim}[formatcom=\color{codec}]
