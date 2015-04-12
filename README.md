@@ -1,4 +1,4 @@
-点击下载[openSUSE新手指南.pdf](http://home.ustc.edu.cn/~zpj/pdf/openSUSE%e6%96%b0%e6%89%8b%e6%8c%87%e5%8d%97.pdf)
+点击下载[openSUSE新手指南.pdf](http://home.ustc.edu.cn/~zpj/pdf/openSUSE%e6%96%b0%e6%89%8b%e6%8c%87%e5%8d%97.pdf)，pdf文件与源文件不一定完全同步！
 
 身边有很多同学想学习或者需要使用Linux，然而最初从Windows转到Linux的人往往有各种不习惯，遇到很多问题。
 
