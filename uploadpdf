@@ -1,3 +1,0 @@
-#/usr/bin/env bash
-#将会上传至我的私人ftp空间以提供pdf下载
-lftp -c "lftp pdf; put openSUSE新手指南.pdf"

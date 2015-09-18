@@ -104,7 +104,9 @@ openSUSE下安装软件一般先用\zy 搜索，找到了便可以直接用\zy �
 
 由于openSUSE中可能有一个软件包的不同厂商的版本，而openSUSE具有厂商黏性，因此运行更新的时候常常会遇到类似的情况：“将不会安装以下 51个软件包的更新：amarok apper bbswitch\ldots”，若对此有疑问请参见\href{https://forum.suse.org.cn/viewtopic.php?t=2777&p=21896}{为什么有些包不会被更新}
 \section[双显卡]{双显卡关闭独立显卡}
-\paragraph{NVIDIA} 如果你的显卡支持Bumblebee，请参见\href{https://zh.opensuse.org/SDB:Bumblebee}{SDB:Bumblebee}，建议新手加源安装。注意，请确保在YaST查看相应软件对应的版本都来自于Bumblebee源
+\paragraph{NVIDIA} 如果你的显卡支持Bumblebee，请参见\href{https://zh.opensuse.org/SDB:Bumblebee}{SDB:Bumblebee}，建议新手只安装bbswitch（不需要安装驱动），这样你可以直接跳过下一段。
+
+如果你要安装bumblebee，建议采取加源安装方法。如果你要安装bumblebee
 下载驱动时如果速度较慢，可以先用其他手段下载好，当安装到一半时按一次Ctrl+C，再将它替换掉\command{/usr/src/}下面的同名的\command{.run}文件，再在终端的问答中用r选项继续即可安装。如果安装到一半（驱动没有下载完整）使，按了两次Ctrl+C完全退出，那么会出现校验码不符合的错误，解决它的方法就是将\command{/usr/src/}下面的\command{.run}文件删除或替换为完整的驱动。
 
 \paragraph{AMD} 如果你用的是开源驱动的话，在\command{/etc/init.d/after.local}后面加下面两行，那么开机后将会自动运行以关闭独显：
