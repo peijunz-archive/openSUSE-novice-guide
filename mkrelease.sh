@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-zip pron-base.zip *.pdf README.md
+zip openSUSE-Guide-for-novices.zip *.pdf README.md
