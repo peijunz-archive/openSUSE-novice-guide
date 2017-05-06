@@ -1,6 +1,12 @@
 \documentclass[12pt,openany]{book}
-\usepackage{zpj}%请查看myconf项目中的zpj.sty
-\usepackage{ulem}
+\usepackage[hyperref, UTF8, fontset=windows]{ctex}
+\usepackage{amsmath}
+\usepackage{verbatim}
+\usepackage[svgnames,dvipsnames,x11names]{xcolor}
+\usepackage{paralist}%行间列表compactenum
+\usepackage{graphicx}%图片嵌入
+%\usepackage[hypcap=true]{caption}
+\usepackage{geometry}%screen用于屏幕\usepackage{ulem}
 \usepackage{fancyvrb}
 \usepackage[linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}%超链接等各种颜色设为纯蓝
 \definecolor{codec}{RGB}{100,64,0}%color for code
@@ -17,7 +23,7 @@
 \author{\href{mailto:zpj.ustc@gmail.com}{\texttt{zpj.ustc}}}
 \maketitle
 \chapter*{关于}
-% \input{README.tex}
+\input{README.tex}
 
 本文档源文档现已托管在\href{https://github.com/peijunz/openSUSE-novice-guide}{Github}上，欢迎对其进行修改分发。
 \tableofcontents
